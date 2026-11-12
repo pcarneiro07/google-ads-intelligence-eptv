@@ -2,6 +2,12 @@ name: Snowflake review deployment — manual only
 on:
   workflow_dispatch:
     inputs:
+      operation:
+        description: 'Validate only (default) or deploy homologation after approval'
+        required: true
+        type: choice
+        options: [validate, deploy]
+        default: validate
       reviewed_plan:
         description: 'Plan, permissions, cost and regression results reviewed and approved'
         required: true
@@ -9,14 +15,22 @@ on:
         default: false
 permissions:
   contents: read
+concurrency:
+  group: snowflake-google-ads-review
+  cancel-in-progress: false
 jobs:
   checks:
     uses: ./.github/workflows/ci.yml
   deploy-review:
     needs: checks
-    if: ${{ inputs.reviewed_plan && vars.ENABLE_SNOWFLAKE_REVIEW_DEPLOY == 'true' }}
+    if: ${{ github.ref == 'refs/heads/migration/snowflake-app-runtime' && (inputs.operation == 'validate' || (inputs.reviewed_plan && vars.ENABLE_SNOWFLAKE_REVIEW_DEPLOY == 'true')) }}
     environment: snowflake-review-approval
     runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_REVIEW_USER }}
+      SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_REVIEW_ROLE }}
     permissions:
       contents: read
       id-token: write
@@ -27,16 +41,32 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node migration/check-publication.mjs
+      - run: node migration/prepare-package.mjs
+      - run: node migration/verify-package.mjs .migration-package
+      - name: Require environment configuration
+        shell: bash
+        run: |
+          test -n "$SNOWFLAKE_ACCOUNT" || { echo 'Missing SNOWFLAKE_ACCOUNT'; exit 1; }
+          test -n "$SNOWFLAKE_USER" || { echo 'Missing SNOWFLAKE_REVIEW_USER'; exit 1; }
+          test "$SNOWFLAKE_ROLE" = EPTV_ADS_APP_OWNER || { echo 'Unexpected review role'; exit 1; }
       - uses: snowflakedb/snowflake-actions@v3
         with:
           use-oidc: true
-          cli-version: '3.26.0'
-      - run: node migration/check-publication.mjs
-      - run: node migration/prepare-package.mjs
-      - name: Deploy reviewed allowlist package to homologation
+          cli-version: '3.33.0'
+      - name: Check WIF connection and review manifest without publishing
         working-directory: .migration-package
-        env:
-          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_REVIEW_ROLE }}
+        run: |
+          snow connection test -x
+          snow app bundle
+      - name: Inspect review upload bundle
+        run: node migration/verify-package.mjs .migration-package/output/bundle
+      - name: Validate review database and schema
+        working-directory: .migration-package
+        run: |
+          snow app validate -x
+      - name: Deploy reviewed allowlist package to homologation
+        if: ${{ inputs.operation == 'deploy' }}
+        working-directory: .migration-package
         run: snow app deploy -x
       # No production target/workflow; Google credentials remain in Snowflake Secrets.

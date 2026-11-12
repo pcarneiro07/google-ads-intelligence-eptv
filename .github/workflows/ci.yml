@@ -9,6 +9,7 @@ permissions:
 jobs:
   regression:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,4 +30,14 @@ jobs:
       - run: npm run build
       - run: python -m py_compile backend/dashboard_server.py backend/extrair_google_ads.py backend/classificacao_programas.py
       - run: node migration/prepare-package.mjs
+      - run: node migration/verify-package.mjs .migration-package
+      - uses: snowflakedb/snowflake-actions@v3
+        with:
+          use-oidc: false
+          cli-version: '3.33.0'
+      - name: Bundle offline on Ubuntu (no Snowflake authentication)
+        working-directory: .migration-package
+        run: snow app bundle
+      - name: Inspect actual upload bundle against source allowlist
+        run: node migration/verify-package.mjs .migration-package/output/bundle
       # No real Ads credentials, snapshots or production API calls in CI.

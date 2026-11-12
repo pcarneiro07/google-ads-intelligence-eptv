@@ -1,12 +1,14 @@
 # Revisão da migração V6.1 para Snowflake App Runtime
 
+**Atualização de pipeline:** consulte [Homologação pelo GitHub Actions](HOMOLOGACAO_ACTIONS.md) para o fluxo Ubuntu, validação sem publicação e configuração administrativa atual. As verificações abaixo registram também etapas anteriores da migração.
+
 **Estado:** código e arquivos preparados para revisão; nenhum GitHub remoto, upload, provisionamento, chamada real Google Ads ou deploy foi executado nesta tarefa. Os nomes de recursos do manifesto/SQL são propostas, não objetos descobertos na conta.
 
 ## Compatibilidade e arquitetura
 
 O App Runtime atualmente aceita Node.js; suporte Python está planejado. O servidor Python não pode ser publicado diretamente apenas acrescentando um manifesto. A implementação prepara um backend Node separado, mantendo HTML/CSS/JavaScript atuais, sem Streamlit, Next.js obrigatório ou subprocesso Python no container. A conta deve ser paga, estar em região comercial suportada e ter App Runtime habilitado; isso ainda depende de confirmação da EPTV. [Limitações oficiais](https://docs.snowflake.com/en/developer-guide/snowflake-app-runtime/limitations)
 
-Node 22 é o alvo do CI, com compatibilidade declarada 22–24. Os testes locais rodaram em Node 24. A CLI preparada para CI é 3.26.0; não foi instalada ou executada localmente. [Preparação oficial](https://www.snowflake.com/en/developers/guides/getting-started-snowflake-app-runtime/)
+Node 22 é o alvo do CI, com compatibilidade declarada 22–24. Os testes locais rodaram em Node 24. A CLI preparada para CI é 3.33.0; não foi instalada ou executada localmente. [Preparação oficial](https://www.snowflake.com/en/developers/guides/getting-started-snowflake-app-runtime/)
 
 | Área | Adaptação preparada | Preservação |
 |---|---|---|
@@ -88,7 +90,7 @@ CREATE USER EPTV_ADS_GITHUB_REVIEW TYPE = SERVICE
 GRANT ROLE EPTV_ADS_APP_OWNER TO USER EPTV_ADS_GITHUB_REVIEW;
 ```
 
-As actions usam majors oficiais; a CLI está fixada em 3.26.0. Se a política corporativa exigir SHAs imutáveis, resolvê-los e revisá-los antes de habilitar deploy. Não foram inventados hashes de terceiros.
+As actions usam majors oficiais; a CLI está fixada em 3.33.0. Se a política corporativa exigir SHAs imutáveis, resolvê-los e revisá-los antes de habilitar deploy. Não foram inventados hashes de terceiros.
 
 ## Manifesto e pacote
 
