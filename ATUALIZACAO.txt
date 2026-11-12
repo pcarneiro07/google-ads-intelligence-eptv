@@ -1,0 +1,5 @@
+Google Ads Intelligence EPTV V5 - ATUALIZACAO LOCAL
+Copie os arquivos desta pasta para a pasta existente:
+C:\Dev\Google-Ads-Intelligence-EPTV-V4
+NAO apague backend/credentials.json, backend/.env, backend/dados_privados, backend/extrair_google_ads.py.
+Veja README_V5_DADOS_REAIS.md.

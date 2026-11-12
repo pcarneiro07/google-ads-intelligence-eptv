@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-motion="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f7fd">
+<meta name="description" content="Google Ads Intelligence: painel local de dados reais de desempenho de anúncios YouTube, público, cidades, dispositivos e horários.">
+<title>Google Ads Intelligence • EPTV V6.1 (conciliação API)</title>
+<style>
+:root{--blue:#2563eb;--googleblue:#4285f4;--green:#24a76b;--yellow:#fbbc04;--red:#ea4335;--purple:#7758e8;--ink:#192b4a;--muted:#75839d;--line:#e4ebf5;--wash:#f5f8ff;--white:#fff;--shadow:0 14px 42px #253e7010;--radius:21px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--wash);font:14px/1.5 'Segoe UI',Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #86b3ff;outline-offset:3px}button:disabled{opacity:.5;cursor:not-allowed}h1,h2,h3,p{margin:0}h2{font-size:23px;letter-spacing:-.7px}small{font-size:11px}button{border:0}a{color:inherit}.app{display:flex;min-height:100vh}.sidebar{width:248px;flex:0 0 248px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;padding:28px 16px 22px;gap:28px;position:sticky;top:0;max-height:100vh;z-index:10}.brand{display:flex;align-items:center;gap:12px;padding:0 7px}.brandmark{position:relative;width:43px;height:43px;display:grid;place-items:center;border-radius:14px;background:#eef4ff;flex:none}.brandmark b{width:17px;height:17px;border:5px solid var(--googleblue);border-right-color:var(--green);border-bottom-color:var(--yellow);transform:rotate(-30deg);border-radius:50%}.brandmark:after{content:'';position:absolute;right:7px;top:7px;width:7px;height:7px;background:var(--red);border-radius:50%}.brandtext{line-height:1.1}.brandtext strong{font-size:14px;letter-spacing:-.4px;display:block}.brandtext span{display:block;color:var(--muted);font-size:11px;letter-spacing:1.1px;font-weight:800;margin-top:5px}.navsmall{font-size:10px;color:#9aa8bd;letter-spacing:1.8px;padding:0 13px;font-weight:800;margin-bottom:10px}.nav{display:grid;gap:7px}.navbtn{width:100%;display:flex;align-items:center;text-align:left;gap:12px;background:transparent;color:#657591;font-weight:700;padding:13px 12px;border-radius:14px;transition:background .2s,color .2s,transform .2s}.navbtn:hover{background:#f1f6ff;transform:translateX(2px)}.navbtn.active{background:#eaf2ff;color:#1756cf}.navbtn.active:before{content:'';width:4px;height:21px;background:var(--googleblue);border-radius:5px;margin-left:-12px;margin-right:0}.navbtn svg{width:19px;height:19px;flex:none;stroke-width:1.8}.navbtn.active svg{stroke-width:2.2}.navbtn span{white-space:nowrap}.sidetip{margin-top:auto;background:linear-gradient(160deg,#f0f6ff,#f9f7ff);border:1px solid #e5ecfd;border-radius:18px;padding:17px 15px;position:relative;overflow:hidden}.sidetip:after{content:'';width:78px;height:78px;border:11px solid #7baaff34;border-radius:50%;position:absolute;right:-36px;top:-32px}.sidetip .tipicon{font-size:23px}.sidetip strong{display:block;margin-top:8px;font-size:13px}.sidetip p{font-size:11px;color:#78869f;margin-top:5px}.sidetip .dot{background:var(--green);display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px}.footbrand{color:#a4afc0;font-size:11px;padding:0 8px}.main{flex:1;min-width:0;padding:0 38px 38px;max-width:1760px;margin:0 auto}.topbar{height:84px;display:flex;justify-content:space-between;align-items:center;gap:16px}.crumb{color:#91a0b5;font-size:12px;font-weight:700}.crumb strong{color:#354d71}.topactions{display:flex;align-items:center;gap:10px}.demo{display:inline-flex;align-items:center;gap:6px;color:#b27912;font-size:11px;background:#fff7e2;border:1px solid #ffe6a7;padding:9px 11px;border-radius:999px;font-weight:850;letter-spacing:.35px}.demo span{width:6px;height:6px;background:#f4ab1e;border-radius:100%}.ghostbtn{height:38px;border-radius:11px;background:#fff;border:1px solid var(--line);color:#566681;padding:0 13px;font-weight:750;font-size:12px;display:inline-flex;gap:8px;align-items:center;box-shadow:0 2px 6px #23446a04}.ghostbtn:hover{border-color:#b8ceff;color:var(--blue)}.ghostbtn svg{width:15px;height:15px}.export{background:var(--blue);border-color:var(--blue);color:#fff}.export:hover{background:#164dd1;color:#fff}.hero{background:linear-gradient(114deg,#1d54ce 0%,#3479f2 59%,#57b6e3 110%);min-height:220px;position:relative;overflow:hidden;border-radius:26px;box-shadow:0 17px 42px #2b70d62e;display:flex;align-items:center;justify-content:space-between;padding:31px 42px}.hero:before{content:'';position:absolute;width:510px;height:510px;border-radius:50%;border:80px solid #ffffff0b;right:64px;top:-255px}.hero:after{content:'';position:absolute;width:280px;height:280px;border:1px solid #ffffff27;border-radius:50%;right:-96px;bottom:-195px}.hero-copy{z-index:2;max-width:690px}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:900;color:#c3e8ff;text-transform:uppercase;display:flex;align-items:center;gap:8px}.eyebrow:before{content:'';width:18px;height:3px;background:var(--yellow);border-radius:10px}.hero h1{font-size:clamp(25px,3.2vw,37px);line-height:1.14;letter-spacing:-1.6px;color:white;max-width:700px;margin-top:17px;font-weight:850}.hero h1 em{color:#ffe28c;font-style:normal}.hero p{color:#daeaff;font-size:13px;margin-top:14px;max-width:565px}.orbital{width:235px;height:186px;position:relative;margin:0 22px;flex:none;filter:drop-shadow(0 6px 15px #093aa63b)}.orbit{position:absolute;inset:14px 36px;width:160px;height:160px;border:13px solid transparent;border-radius:50%;will-change:transform;animation:spin 19s linear infinite}.orbit.o1{border-top-color:#ffffff;border-left-color:#ffffff;border-bottom-color:#7fd9f5;transform:rotate(20deg)}.orbit.o2{inset:37px 60px;width:116px;height:116px;border-width:10px;border-right-color:#ffdc65;border-top-color:#ffdc65;animation:reverse 11s linear infinite}.orbit.o3{inset:61px 83px;width:71px;height:71px;border-width:8px;border-bottom-color:#6ae3aa;border-left-color:#6ae3aa;animation:spin 8s linear infinite}.orbital:after{content:'';position:absolute;width:12px;height:12px;border-radius:50%;background:#ff8181;top:27px;right:10px;box-shadow:0 0 0 7px #ffffff20;animation:float 4s ease-in-out infinite}.orbital:before{content:'';position:absolute;width:8px;height:8px;border-radius:50%;background:#f5ffb1;bottom:25px;left:9px;animation:float 3s ease-in-out infinite alternate}.hero-spark{position:absolute;color:#d8eeff;font-size:30px;font-weight:200;animation:float 6s ease-in-out infinite;opacity:.7}.hero-spark.s1{top:26px;left:53%}.hero-spark.s2{bottom:18px;right:13%;font-size:19px;animation-delay:2s}.filters{margin:23px 0 26px;background:#fff;border:1px solid var(--line);border-radius:17px;min-height:76px;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:13px 19px;box-shadow:0 4px 18px #1d3e6f07;flex-wrap:wrap}.filterleft,.filterright{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.fieldlabel{font-size:11px;font-weight:850;color:#9ca8bc;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}.switchgroup{display:flex;align-items:center;gap:3px;background:#f1f5fc;border-radius:11px;padding:4px}.switchgroup button{border-radius:8px;padding:8px 12px;color:#74839b;background:transparent;font-size:12px;font-weight:850;transition:.2s}.switchgroup button.active{background:#fff;color:var(--blue);box-shadow:0 2px 8px #305d8d16}.switchgroup button.active[data-prog="BDC"]{color:#1965c2;box-shadow:0 2px 8px #357de128}.switchgroup button.active[data-prog="EPTV1"]{color:#178657;box-shadow:0 2px 8px #357de128}.switchgroup button.active[data-prog="EPTV2"]{color:#be4d27;box-shadow:0 2px 8px #357de128}.section-head{margin:30px 0 18px;display:flex;justify-content:space-between;gap:14px;align-items:end}.section-head p{color:var(--muted);font-size:12px;margin-top:6px}.section-head .kicker{color:var(--blue);font-weight:850;letter-spacing:1.8px;text-transform:uppercase;font-size:10px;margin-bottom:7px}.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.kpi{background:#fff;border-radius:20px;border:1px solid var(--line);padding:20px 21px;min-width:0;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .24s ease,box-shadow .24s ease}.kpi:hover,.panel:hover{transform:translateY(-3px);box-shadow:0 18px 40px #253e7018}.kpi:before{content:'';position:absolute;height:4px;width:43%;top:0;left:0;border-radius:0 15px 15px 0;background:var(--kcol)}.kpiicon{width:33px;height:33px;border-radius:11px;display:grid;place-items:center;color:var(--kcol);background:var(--kbg);font-size:17px;font-weight:900;margin-bottom:13px}.kpilabel{color:#8390a9;font-size:12px;font-weight:750}.kpivalue{font-size:clamp(22px,2.3vw,30px);letter-spacing:-1.5px;font-weight:850;margin-top:6px;line-height:1.15;font-variant-numeric:tabular-nums}.kpisub{margin-top:10px;color:#9aa6bb;font-size:11px;line-height:1.4}.row2{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(285px,1fr);gap:17px;margin-top:17px}.hours-row{grid-template-columns:minmax(0,1.15fr) minmax(250px,.85fr)}.panel{border-radius:21px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);min-width:0;padding:23px 24px;transition:transform .22s,box-shadow .22s}.panelhead{display:flex;justify-content:space-between;gap:13px;align-items:start;margin-bottom:19px}.panelhead h3{font-size:16px;letter-spacing:-.4px}.panelhead p{font-size:12px;color:#91a0b5;margin-top:5px}.chipgroup{display:flex;background:#f1f5ff;padding:3px;border-radius:10px;gap:2px}.chipgroup button{background:transparent;padding:7px 10px;color:#8b9ab0;border-radius:8px;font-size:11px;font-weight:850}.chipgroup button.active{color:#245edf;background:#fff;box-shadow:0 1px 6px #28468916}.chart-wrap{height:264px;position:relative}.trend-svg{width:100%;height:100%;display:block;overflow:visible}.trend-svg text{font-family:inherit;font-size:10px;fill:#9aa8bb}.trend-svg .line{fill:none;stroke:#4285f4;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:drawline 1.35s ease forwards}.trend-svg .gridline{stroke:#eaf0fa;stroke-width:1}.trend-svg .area{fill:url(#areaGradient)}.spark-note{font-size:11px;color:#a1aec2;margin-top:10px}.program-bars{display:grid;gap:20px;margin-top:10px}.program-row{display:grid;gap:8px}.program-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px}.program-top b{font-size:13px}.program-top span{color:#91a0b5;font-size:11px}.program-track{background:#eef3fa;height:11px;border-radius:20px;overflow:hidden}.program-fill{height:100%;border-radius:20px;background:var(--pc);width:var(--pw);transform-origin:left;animation:grow .9s ease both}.program-bottom{display:flex;justify-content:space-between;font-size:11px;color:#9ca7b9}.insights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:17px}.insight{display:flex;align-items:start;gap:14px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px;min-width:0}.insight-icon{flex:none;width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:var(--ibg);color:var(--ic);font-size:18px}.insight strong{display:block;font-size:13px;margin-bottom:4px}.insight p{font-size:11.5px;color:#8b99ae;line-height:1.5}.view{display:none}.view.active{display:block;animation:enter .38s ease both}.section-summary{margin:14px 0 24px}.section-summary p{color:#8190aa;font-size:13px;margin-top:5px}.tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.selectbox,.searchbox{height:40px;border-radius:11px;border:1px solid #dfe8f4;background:#fff;color:#506581;padding:0 12px;font-size:12px;font-weight:700}.searchbox{width:215px;font-weight:500}.creatives{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.creative{display:flex;flex-direction:column;min-width:0;background:white;border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 7px 23px #23446a08;transition:transform .2s,box-shadow .2s;cursor:pointer;text-align:left;padding:0;color:var(--ink)}.creative:hover{transform:translateY(-5px);box-shadow:0 20px 37px #1c4e931b}.thumb{height:153px;position:relative;overflow:hidden;background:linear-gradient(140deg,var(--t1),var(--t2));isolation:isolate}.thumb .blur{position:absolute;width:145px;height:145px;border-radius:50%;right:-17px;top:-34px;background:var(--t3);filter:blur(2px);opacity:.85}.thumb .diag{position:absolute;transform:rotate(-24deg);border:1px solid #ffffff35;width:210px;height:300px;left:30%;top:-100px;border-radius:50%}.thumb .rings{position:absolute;width:145px;height:145px;border-radius:100%;border:22px solid #ffffff30;right:25px;top:28px}.thumb .lines{position:absolute;bottom:-10px;left:0;right:0;height:70px;opacity:.3;background:repeating-linear-gradient(0deg,transparent 0 14px,#fff 15px 16px)}.thumbcontent{position:absolute;left:22px;bottom:19px;color:white;z-index:1;text-shadow:0 2px 10px #152e4833}.thumbcontent small{font-weight:900;letter-spacing:1.6px;color:#ffffffb8}.thumbcontent h3{font-size:19px;max-width:220px;line-height:1.08;letter-spacing:-.5px;margin-top:7px}.play{position:absolute;z-index:2;right:15px;bottom:15px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#ffffffdd;color:#3164b7;box-shadow:0 4px 18px #1636662a;font-size:13px}.creative-info{padding:17px 18px 18px;flex:1}.ctop{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.progflag{font-size:10px;letter-spacing:.5px;font-weight:900;color:var(--pc);background:var(--pbg);padding:5px 9px;border-radius:7px}.tag{font-size:10px;color:#9aa8b9;background:#f6f8fb;border-radius:7px;padding:5px 8px}.creative-info h4{font-size:14px;letter-spacing:-.3px;margin:0 0 13px}.creative-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #edf0f7;padding-top:13px;gap:9px}.creative-metrics small{display:block;color:#99a6b9;font-size:10px}.creative-metrics b{display:block;margin-top:3px;font-size:13px;letter-spacing:-.2px}.creative-hint{margin:12px 0 0;color:#8ba0b9;font-size:11px}.aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.metricbars{display:grid;gap:17px;padding-top:3px}.baritem{display:grid;grid-template-columns:105px 1fr 64px;align-items:center;gap:12px;font-size:12px}.baritem .label{font-weight:720}.baritem .n{font-size:11px;font-weight:850;text-align:right;color:#77869e}.barline{height:10px;border-radius:15px;background:#edf2fa;overflow:hidden}.barline .fill{height:100%;border-radius:15px;background:var(--bar);width:var(--barw);animation:grow .8s both;transform-origin:left}.panelnote{font-size:11px;color:#9ba8ba;margin-top:17px;line-height:1.5}.cities{display:grid;gap:13px}.cityitem{display:grid;grid-template-columns:24px minmax(88px,1fr) minmax(85px,1.5fr) 70px 73px;gap:10px;align-items:center;font-size:12px}.cityrank{color:#b0bdd0;font-weight:900}.cityname{font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cityviews{text-align:right;font-weight:800}.citycpv{text-align:right;color:#8392a7;font-size:11px}.devicebox{display:flex;align-items:center;gap:21px;justify-content:center;min-height:235px}.donut{flex:none;width:172px;height:172px;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(#4285f4 0 50%,#34a853 50% 70%,#fbbc04 70% 80%,#ea4335 80% 100%);animation:enter .7s ease}.donut:before{content:'';position:absolute;inset:30px;background:white;border-radius:50%}.donut-center{position:relative;text-align:center}.donut-center b{font-size:23px;letter-spacing:-1px}.donut-center small{display:block;color:#99a6bc;font-size:10px}.device-list{display:grid;gap:11px;flex:1;min-width:130px}.device-line{display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:11px}.device-line .dlabel{display:flex;align-items:center;gap:7px;color:#6d7c95}.device-line i{height:9px;width:9px;border-radius:3px;flex:none;background:var(--dc)}.device-line b{font-weight:850;color:#344562}.device-line small{color:#9aa8bb;display:block}.hours-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px}.heatmap-scroll{overflow-x:auto;padding:4px 2px 14px}.heatmap{display:grid;grid-template-columns:55px repeat(24,minmax(25px,1fr));gap:5px;min-width:720px}.heatmap .head{font-size:9px;font-weight:750;color:#a5b1c2;text-align:center;align-self:center}.heatmap .weekday{font-size:11px;color:#697990;align-self:center;font-weight:800}.heatcell{height:31px;background:#eef4ff;border:1px solid transparent;border-radius:6px;position:relative;transition:transform .16s,outline .16s;cursor:pointer}.heatcell:hover{transform:scale(1.15);z-index:2;outline:2px solid #255adc}.heatcell.picked{outline:2.5px solid #193c9b;outline-offset:1px}.heatlegend{display:flex;justify-content:end;align-items:center;gap:7px;color:#9aa8bc;font-size:11px;margin-top:12px}.heatlegend span{width:18px;height:12px;border-radius:3px}.hours-detail{display:grid;grid-template-columns:1fr auto;align-items:center;gap:17px;margin-top:17px;background:linear-gradient(90deg,#edf5ff,#f9fbff);border:1px solid #deebff;border-radius:14px;padding:18px 20px}.hours-detail .big{font-size:21px;font-weight:900;letter-spacing:-.7px}.hours-detail p{color:#8091ab;font-size:11px;margin-top:4px}.hours-numbers{display:flex;gap:26px;flex-wrap:wrap}.hours-numbers small{display:block;color:#8897ae}.hours-numbers b{display:block;font-size:15px;margin-top:3px}.days-bars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:15px;height:210px;align-items:end;padding-bottom:20px;border-bottom:1px solid #ebf0fa}.daycol{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:end;gap:10px}.daybar{width:min(100%,48px);height:var(--dh);min-height:8px;border-radius:9px 9px 3px 3px;background:linear-gradient(0deg,#4285f4,#91b8ff);animation:rise .8s ease both;transform-origin:bottom}.daycol span{font-size:11px;color:#8e9cb1;font-weight:700;position:absolute;transform:translateY(25px)}.lowernote{font-size:11px;color:#9ca9ba;line-height:1.55;margin-top:17px}.smallbadge{font-size:10px;color:#5676a2;border:1px solid #dde7f6;border-radius:8px;padding:6px 9px;background:#f8fbff;font-weight:750}.empty{padding:45px 20px;color:#91a0b6;text-align:center;background:white;border:1px dashed #d7e1ef;border-radius:17px}.view-footer{display:flex;align-items:center;justify-content:space-between;gap:13px;margin-top:31px;color:#a4afc0;font-size:11px;flex-wrap:wrap}.linkbtn{background:none;border:0;padding:0;color:var(--blue);font-weight:750;font-size:11px;cursor:pointer}.overlay{position:fixed;z-index:40;inset:0;background:#10234780;display:none;align-items:stretch;justify-content:flex-end;backdrop-filter:blur(3px)}.overlay.show{display:flex}.drawer{width:min(500px,100%);background:white;height:100%;overflow-y:auto;padding:25px;box-shadow:-15px 0 45px #061a4730;animation:slide .3s ease}.drawerhead{display:flex;align-items:center;justify-content:space-between;gap:16px}.drawer h2{font-size:22px;margin-top:19px}.drawer p{color:#91a0b5;font-size:12px;margin-top:6px}.drawer .thumb{border-radius:15px;margin-top:18px}.drawer .summary-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0}.drawer .summary-metrics>div{background:#f7faff;border:1px solid #e8eef9;border-radius:13px;padding:14px}.drawer .summary-metrics small{display:block;color:#97a4b6}.drawer .summary-metrics b{display:block;font-size:18px;margin-top:4px}.drawer .drawer-section{border-top:1px solid #edf0f6;padding-top:18px;margin-top:18px}.drawer-section h3{font-size:14px;margin-bottom:9px}.drawer .tiptext{font-size:12px;line-height:1.7;color:#6d7e99}.iconbtn{height:34px;width:34px;border-radius:10px;background:#f1f5fc;color:#6780a2;font-size:20px}.infomodal{display:none;position:fixed;inset:0;z-index:55;align-items:center;justify-content:center;background:#0f254e91;padding:16px}.infomodal.show{display:flex}.infobody{width:min(570px,100%);background:#fff;border-radius:21px;padding:27px;box-shadow:0 15px 60px #0d27424d}.infobody h3{font-size:20px}.infobody p{color:#73839f;font-size:13px;margin:14px 0;line-height:1.8}.infobody ul{color:#73839f;padding-left:21px;font-size:12px;line-height:1.8}.infobody button{float:right}.view:focus{outline:none}@keyframes spin{to{transform:rotate(360deg)}}@keyframes reverse{to{transform:rotate(-360deg)}}@keyframes float{50%{transform:translateY(-10px) translateX(4px)}}@keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes drawline{to{stroke-dashoffset:0}}@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes rise{from{transform:scaleY(.01)}to{transform:scaleY(1)}}@keyframes slide{from{transform:translateX(45px);opacity:.7}to{transform:translateX(0);opacity:1}}html[data-motion=off] *,html[data-motion=off] *:before,html[data-motion=off] *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html[data-motion=off] .trend-svg .line{stroke-dashoffset:0}html[data-motion=off] .program-fill,html[data-motion=off] .barline .fill{transform:scaleX(1)}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.trend-svg .line{stroke-dashoffset:0!important}.program-fill,.barline .fill{transform:none!important}}@media(max-width:1220px){.sidebar{width:215px;flex-basis:215px}.main{padding:0 22px 28px}.hero{padding:29px}.orbital{width:195px;margin:0}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.creatives{grid-template-columns:repeat(2,minmax(0,1fr))}.insights{grid-template-columns:1fr 1fr}.devicebox{flex-direction:column}.donut{width:160px;height:160px}.device-list{width:100%}}@media(max-width:920px){.sidebar{position:fixed;bottom:0;top:auto;left:0;right:0;width:100%;max-height:70px;min-height:65px;padding:8px 7px;border:1px solid #e0e8f6;border-radius:15px 15px 0 0;flex-direction:row;align-items:center;justify-content:center;box-shadow:0 -12px 26px #24407a13}.sidebar .brand,.sidebar .navsmall,.sidetip,.footbrand{display:none}.sidebar nav{width:100%}.nav{display:flex;align-items:center;justify-content:space-around;gap:3px}.navbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:5px 1px;font-size:10px;border-radius:9px;flex:1}.navbtn span{font-size:10px}.navbtn svg{width:19px;height:19px}.navbtn.active:before{display:none}.navbtn:hover{transform:none}.main{padding:0 17px 90px;width:100%}.row2,.hours-row{grid-template-columns:1fr}.aud-grid{grid-template-columns:1fr 1fr}.devicebox{flex-direction:row}.orbital{width:210px}}@media(max-width:660px){.main{padding:0 12px 92px}.topbar{height:67px}.crumb{font-size:11px}.topactions{gap:6px}.topactions .demo{padding:7px 8px;font-size:10px}.ghostbtn{padding:0 10px;height:34px}.ghostbtn .btntext{display:none}.hero{min-height:214px;padding:24px 20px}.hero-copy{max-width:76%}.hero h1{font-size:24px;letter-spacing:-.9px;margin-top:13px}.hero p{font-size:11px}.orbital{position:absolute;right:-86px;top:17px;width:190px;transform:scale(.78)}.hero-spark{display:none}.filters{margin:15px 0 21px;padding:12px;gap:10px}.filterleft,.filterright{gap:7px}.fieldlabel{font-size:9px}.switchgroup button{padding:8px 9px;font-size:11px}.section-head{margin:25px 0 14px}.section-head h2{font-size:20px}.section-head p{font-size:11px}.grid4{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.kpi{padding:15px 13px;border-radius:16px}.kpiicon{width:29px;height:29px;margin-bottom:10px}.kpivalue{font-size:clamp(19px,5.3vw,28px)}.kpilabel{font-size:10px}.kpisub{font-size:10px}.panel{padding:17px 14px;border-radius:16px}.panelhead{margin-bottom:15px}.panelhead h3{font-size:14px}.panelhead p{font-size:10px}.row2{gap:10px;margin-top:10px}.insights{grid-template-columns:1fr;gap:9px;margin-top:10px}.insight{padding:13px}.creatives{grid-template-columns:1fr;gap:12px}.thumb{height:180px}.section-head.toolshead{align-items:start;flex-direction:column}.tools{width:100%}.searchbox{flex:1;width:130px}.aud-grid{grid-template-columns:1fr;gap:11px}.baritem{grid-template-columns:85px 1fr 45px;gap:8px;font-size:11px}.devicebox{flex-direction:row}.donut{width:143px;height:143px}.donut:before{inset:25px}.cityitem{grid-template-columns:18px 88px minmax(54px,1fr) 55px;gap:6px;font-size:11px}.citycpv{display:none}.hours-detail{grid-template-columns:1fr}.view-footer{margin-top:22px}.days-bars{height:170px}.navbtn span{font-size:9px}}
+
+.dataBanner{margin:14px 0 18px;border-radius:13px;background:#fff7e8;border:1px solid #f8dfb2;padding:11px 16px;color:#775f2b;font-size:12px;font-weight:650}
+.dataBanner.ok{background:#eef9f1;border-color:#c7eace;color:#246b4b}
+#sourceBadge.live{color:#0d8758!important;background:#e9f8ef!important}
+.uploadbtn{display:inline-flex;align-items:center;gap:5px;cursor:pointer;border:1px solid var(--line);border-radius:11px;padding:7px 11px;font-weight:750;background:#fff;color:#427dd5;font-size:12px}
+.uploadbtn input{display:none}.empty-message{padding:40px 14px;color:#8490a5;font-weight:650;text-align:center;line-height:1.6}
+.realbarrow{padding:12px 0;border-bottom:1px solid #eef2f8}.realbarhead{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;margin-bottom:8px}.realbarhead span:last-child{color:#71829b;font-size:11px;flex-shrink:0}
+.realtrack{height:9px;background:#eff3f9;overflow:hidden;border-radius:50px}.realtrack span{display:block;height:100%;border-radius:50px;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.realcreative{background:#fff;color:inherit;border:1px solid var(--line);border-radius:17px;text-align:left;overflow:hidden;box-shadow:0 10px 28px #17366809;min-width:0;transition:transform .18s,box-shadow .18s}
+.realcreative:hover{transform:translateY(-4px);box-shadow:0 16px 30px #17366819}.realtile{height:130px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:linear-gradient(115deg,var(--pcolor),#27345e);color:#fff;letter-spacing:.7px;font-size:11px;font-weight:850}.realtileicon{font-size:28px;color:white;border:2px solid #fff8;width:55px;height:55px;border-radius:50%;display:grid;place-items:center}.realbody{padding:18px}.realbody h3{font-size:15px;line-height:1.4;min-height:44px;margin:8px 0 14px;overflow-wrap:anywhere}.realbadge{font-size:10px;background:#edf4fe;color:#41679d;padding:4px 7px;margin-right:5px;border-radius:6px;font-weight:750}.realnumbers{display:flex;gap:14px;justify-content:space-between}.realnumbers div{display:flex;flex-direction:column}.realnumbers small{color:#8493a7}.realnumbers strong{font-size:16px}.realhint{display:block;color:#397ce1;margin-top:12px;font-weight:750}.realbarrow p{margin:5px 0;color:#71829b}
+@media(max-width:680px){.uploadbtn{max-width:116px;white-space:nowrap}.realbarhead{align-items:flex-start;flex-wrap:wrap}.realbarhead span:last-child{flex-shrink:1}}
+
+/* V6.1 — filtros de conta/rede e taxas por formato, sem afetar as animações. */
+.filterselect{min-width:155px;max-width:205px;height:39px;padding:6px 12px;background:#f8fbff;border:1px solid #dce6f6;border-radius:11px;color:#26476d;font-weight:750}
+.filterleft{gap:10px}.format-panel{margin-bottom:17px}.formatselect{min-width:245px;max-width:min(100%,450px);padding:9px 13px;border:1px solid #dce6f6;border-radius:12px;background:#f9fbff;color:#26476d}
+.formatmetrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.format-kpi{border:1px solid #e7eef8;border-radius:14px;background:linear-gradient(120deg,#f6faff,#fff);padding:16px 15px;display:flex;flex-direction:column;gap:7px;min-height:80px}
+.format-kpi small{color:#75839d;font-weight:750}.format-kpi strong{color:#1b3559;font-size:clamp(17px,2vw,22px);font-variant-numeric:tabular-nums}
+@media(max-width:980px){.formatmetrics{grid-template-columns:repeat(2,minmax(0,1fr))}.formatselect{min-width:0;width:100%}}
+@media(max-width:620px){.formatmetrics{grid-template-columns:repeat(2,minmax(0,1fr))}.filterselect{max-width:100%;flex:1}.format-panel .panelhead{flex-wrap:wrap}.formatselect{width:100%}}
+
+.date-range{display:flex;align-items:end;gap:10px;flex-wrap:wrap}.date-range label{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--muted,#5f6368)}.date-range input{font:inherit;min-width:140px;padding:9px 10px;border:1px solid #dadce0;border-radius:8px;background:#fff;color:#202124}.date-range input:focus-visible{outline:2px solid #4285f4;outline-offset:2px}.date-range small{flex-basis:100%;font-size:11px;color:#5f6368}@media(max-width:600px){.date-range{width:100%}.date-range label{flex:1;min-width:125px}.date-range input{width:100%;min-width:0;box-sizing:border-box}}
+
+.days-bars{padding-top:28px}.daybar{position:relative;flex-shrink:0}.dayvalue{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:8px;font-size:11px;line-height:1.3;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;color:#3c4043}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" aria-label="Navegação principal">
+    <div class="brand"><div class="brandmark" aria-hidden="true"><b></b></div><div class="brandtext"><strong>Google Ads</strong><span>INTELLIGENCE</span></div></div>
+    <div><div class="navsmall">EXPLORAR DADOS</div><nav class="nav" aria-label="Páginas">
+      <button class="navbtn active" data-page="overview" type="button" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/></svg><span>Visão geral</span></button>
+      <button class="navbtn" data-page="creative" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/></svg><span>Criativos</span></button>
+      <button class="navbtn" data-page="audience" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5v1"/></svg><span>Público e regiões</span></button>
+      <button class="navbtn" data-page="hours" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Dias e horários</span></button>
+    </nav></div>
+    <div class="sidetip"><div class="tipicon">✦</div><strong>Dados que contam histórias.</strong><p>Investigue campanhas, criativos e distribuição em um só lugar.</p><p style="margin-top:12px"><span class="dot"></span> API dinâmica • conexão local</p></div>
+    <div class="footbrand">EPTV • V5 LOCAL</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="crumb">Intelligence <span style="margin:0 8px;color:#cbd5e4">/</span> <strong id="breadcrumb">Visão geral</strong></div><div class="topactions"><span class="demo" id="sourceBadge"><span></span> CONECTANDO API</span><button class="ghostbtn" id="refreshDataBtn" type="button" title="Consultar o Google Ads novamente">↻ <span class="btntext">Atualizar dados</span></button><button class="ghostbtn" id="motionBtn" title="Desligar animações" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M6 6l1.4 1.4m9.2 9.2L18 18M6 18l1.4-1.4m9.2-9.2L18 6"/><circle cx="12" cy="12" r="4"/></svg><span class="btntext" id="motionText">Efeitos ligados</span></button><button class="ghostbtn export" id="downloadBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v11m-4-4 4 4 4-4M4 16v4h16v-4"/></svg><span class="btntext">Exportar CSV</span><span class="mobilelabel" style="display:none">CSV</span></button></div></header>
+    <section class="hero" aria-label="Apresentação do painel"><div class="hero-copy"><div class="eyebrow">GOOGLE ADS • PERFORMANCE STUDIO</div><h1>Entenda cada exibição.<br><em>Encontre novas oportunidades.</em></h1><p>Campanhas, criativos, públicos e horários em uma experiência mais clara, dinâmica e visual.</p></div><div class="orbital" aria-hidden="true"><span class="orbit o1"></span><span class="orbit o2"></span><span class="orbit o3"></span></div><div class="hero-spark s1">✳</div><div class="hero-spark s2">✦</div></section>
+    <section class="filters" aria-label="Filtros globais"><div class="filterleft">
+      <label class="fieldlabel" for="accountFilter">Conta</label>
+      <select class="selectbox filterselect" id="accountFilter" aria-label="Conta de anúncios">
+        <option value="ALL">Promo + Institucional</option>
+        <option value="7182459480">Promo</option>
+        <option value="5498287982">EPTV Institucional</option>
+      </select>
+      <label class="fieldlabel" for="networkFilter">Rede</label>
+      <select class="selectbox filterselect" id="networkFilter" aria-label="Rede de veiculação">
+        <option value="ALL">Todas as redes</option><option value="YOUTUBE">YouTube</option>
+        <option value="CONTENT">Display</option><option value="GOOGLE_TV">Google TV</option>
+      </select></div><div class="filterleft"><span class="fieldlabel">Programa</span><div class="switchgroup" id="programFilter" role="group" aria-label="Filtrar por programa"><button type="button" data-prog="ALL" class="active" aria-pressed="true">Todos</button><button type="button" data-prog="BDC" aria-pressed="false">BDC</button><button type="button" data-prog="EPTV1" aria-pressed="false">EPTV1</button><button type="button" data-prog="EPTV2" aria-pressed="false">EPTV2</button><button type="button" data-prog="OUTROS" aria-pressed="false">Outros</button></div></div><div class="filterright"><span class="fieldlabel">Período</span><form id="periodFilter" class="date-range" aria-label="Selecionar intervalo de datas"><label for="dateStart">Data inicial<input type="date" id="dateStart" required aria-describedby="dateHelp"></label><label for="dateEnd">Data final<input type="date" id="dateEnd" required aria-describedby="dateHelp"></label><button type="submit" class="ghostbtn" id="applyDatesBtn" disabled>Aplicar</button><small id="dateHelp" aria-live="polite">Até ontem</small></form><button class="ghostbtn" id="infoBtn" title="Sobre os dados" type="button">ⓘ <span class="btntext">Sobre os dados</span></button></div></section>
+    <div id="dataBanner" class="dataBanner" role="status" aria-live="polite">Conectando ao Google Ads…</div><section id="overview" class="view active" tabindex="-1"><div class="section-head"><div><div class="kicker">Panorama</div><h2>O essencial, sem ruído.</h2><p id="overview-sub">Dados reais conciliados de duas contas Google Ads, com filtros por rede e programa.</p></div><span class="smallbadge" id="rangeBadge">12 out. – 10 nov. 2026</span></div><div class="grid4" id="kpiGrid"></div><div class="row2"><div class="panel"><div class="panelhead"><div><h3>Como a performance evoluiu</h3><p>Histórico diário na seleção atual</p></div><div class="chipgroup" id="trendMetric"><button class="active" type="button" data-metric="views">Visualizações</button><button type="button" data-metric="cost">Investimento</button></div></div><div class="chart-wrap" id="trendChart" role="img" aria-label="Gráfico de evolução de performance"></div><p class="spark-note" id="trendCaption"></p></div><div class="panel"><div class="panelhead"><div><h3 id="compareTitle">Distribuição por programa</h3><p id="compareSubtitle">Participação nas visualizações pagas</p></div><div class="chipgroup" id="programMetric"><button type="button" class="active" data-metric="impressions">Impressões</button><button type="button" data-metric="views">TrueView</button><button type="button" data-metric="cost">Investimento</button></div></div><div class="program-bars" id="programChart"></div><p class="panelnote">Exibe o total de campanhas na seleção. Campanhas de alcance sem TrueView continuam visíveis por impressões.</p></div></div><div class="insights" id="insightGrid"></div>
+    <section class="panel format-panel" aria-label="Métricas oficiais por formato" style="margin-top:18px">
+      <div class="panelhead"><div><h3>Taxas de visualização e retenção por formato</h3><p>Dados oficiais da API para cada campanha e rede, sem médias indevidas entre formatos</p></div>
+        <select class="selectbox formatselect" id="formatCampaignSelect" aria-label="Selecionar campanha para taxas oficiais"></select></div>
+      <div id="formatMetrics" class="formatmetrics"></div><p class="panelnote" id="formatSummary">Selecione uma campanha para ver as taxas oficiais.</p>
+    </section></section>
+    <section id="creative" class="view" tabindex="-1"><div class="section-head toolshead"><div><div class="kicker">Criativos e anúncios</div><h2>O vídeo faz a diferença.</h2><p>Compare anúncios e abra detalhes de performance sem sair da página.</p></div><div class="tools"><input type="search" class="searchbox" id="creativeSearch" placeholder="Buscar anúncio..." aria-label="Buscar anúncios"><select class="selectbox" id="creativeSort" aria-label="Ordenar criativos"><option value="views">Mais visualizações</option><option value="cpv">Menor CPV</option><option value="rate">Maior relação TrueView/imp.</option><option value="cost">Maior investimento</option></select></div></div><div id="creativeMeta" class="section-summary" style="font-size:12px;color:#8c9aaf"></div><div class="creatives" id="creativeGrid"></div><div class="lowernote">Os anúncios são identificados pelo ID retornado pela Google Ads API. Este extrato não contém títulos, miniaturas nem URLs dos vídeos.</div></section>
+    <section id="audience" class="view" tabindex="-1"><div class="section-head"><div><div class="kicker">Público e distribuição</div><h2>Quem vê. Onde vê. Como vê.</h2><p>Visões independentes para demografia, cidades e dispositivos.</p></div><span class="smallbadge">Métrica base: visualizações</span></div><div class="aud-grid"><div class="panel"><div class="panelhead"><div><h3>Faixa etária</h3><p>Participação nas visualizações, incluindo não determinado</p></div><span class="smallbadge">Idade</span></div><div class="metricbars" id="ageBars"></div></div><div class="panel"><div class="panelhead"><div><h3>Gênero</h3><p>Recorte independente de idade</p></div><span class="smallbadge">Gênero</span></div><div class="metricbars" id="genderBars"></div><div class="panelnote">Idade e gênero não estão cruzados entre si. A disponibilidade e a cobertura dos dados reais dependem da API e das campanhas.</div></div></div><div class="aud-grid" style="margin-top:17px"><div class="panel"><div class="panelhead"><div><h3>Cidades com mais visualizações</h3><p>Participação da distribuição geográfica</p></div><span class="smallbadge">Localização</span></div><div class="cities" id="cities"></div><p class="panelnote">Nomes de cidades não são inferidos: quando não houver mapeamento geográfico, mostramos o ID retornado pela API.</p></div><div class="panel"><div class="panelhead"><div><h3>Dispositivos</h3><p>Onde os anúncios são visualizados</p></div><span class="smallbadge">Device mix</span></div><div class="devicebox"><div class="donut" id="deviceDonut" role="img" aria-label="Distribuição de dispositivos"><div class="donut-center"><b id="deviceDominant">—</b><small>principal dispositivo</small></div></div><div class="device-list" id="deviceLegend"></div></div><p class="panelnote">Os percentuais são calculados sobre visualizações; A relação de custo total por TrueView é apenas um cálculo auxiliar e não substitui o CPV oficial.</p></div></div></section>
+    <section id="hours" class="view" tabindex="-1"><div class="section-head"><div><div class="kicker">Momentos de entrega</div><h2>O horário também conta.</h2><p>Descubra quando os anúncios acumularam mais visualizações e como varia a eficiência.</p></div><span class="smallbadge">Fuso horário da conta • conferir metadados</span></div><div class="panel"><div class="hours-top"><div class="panelhead" style="margin-bottom:0"><div><h3>Mapa de calor • 7 dias × 24 horas</h3><p>Selecione uma célula para ver os números do intervalo</p></div></div><div class="chipgroup" id="heatMetric"><button type="button" class="active" data-metric="views">Volume</button><button type="button" data-metric="cpv">Custo total/TrueView</button></div></div><div class="heatmap-scroll"><div class="heatmap" id="heatmap" role="group" aria-label="Mapa de calor de horário e dia"></div></div><div class="heatlegend" id="heatLegend"></div><div class="hours-detail" id="hourDetail" aria-live="polite"></div><p class="lowernote">Horários são lidos diretamente do relatório day_of_week × hour da API, sem distribuição simulada. A métrica representa hora da veiculação, não horário de postagem.</p></div><div class="row2 hours-row"><div class="panel"><div class="panelhead"><div><h3>Visualizações por dia da semana</h3><p>Total do período selecionado</p></div></div><div class="days-bars" id="weekBars"></div></div><div class="panel" style="background:linear-gradient(125deg,#f8fbff,#fff)"><div class="panelhead"><div><h3>Leitura rápida dos horários</h3><p>Insights automáticos a partir das células reais</p></div></div><div id="hourInsights"></div></div></div></section>
+    <footer class="view-footer"><span>Google Ads Intelligence • dados privados da EPTV • execução local (127.0.0.1)</span><button class="linkbtn" type="button" id="footerInfo">Metodologia e limitações ↗</button></footer>
+  </main>
+</div>
+<div class="overlay" id="drawerOverlay" role="presentation"><aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Detalhamento de anúncio"><div class="drawerhead"><span class="smallbadge">Detalhamento • dados da API</span><button id="drawerClose" class="iconbtn" title="Fechar" aria-label="Fechar detalhes">×</button></div><div id="drawerContent"></div></aside></div>
+<div class="infomodal" id="infoModal"><div class="infobody" role="dialog" aria-modal="true" aria-label="Fonte e metodologia"><button class="iconbtn" id="infoClose" aria-label="Fechar">×</button><h3>Fonte e metodologia</h3><p>Dados reais da Google Ads API, das contas Promo e EPTV Institucional vinculadas à MCC EPTV, com seleção por rede. Os dados ficam no seu computador: nenhuma credencial é enviada ao navegador, Vercel ou serviços externos.</p><ul><li>O filtro por período consulta diretamente a API Google Ads para as datas selecionadas (sem limite de duração, com término até ontem). O servidor mantém cache apenas na memória por até 15 minutos; não gera snapshots no disco.</li><li>Visão geral: soma apenas do relatório de campanhas, nunca dos relatórios dimensionais. No consolidado, ambas as contas e todas as redes são incluídas. A comparação exata depende de aplicar os mesmos filtros no Google Ads.</li><li>TrueView = <code>metrics.video_trueview_views</code>, não visualizações totais da plataforma. CPV médio TrueView usa metrics.trueview_average_cpv, convertido de micros da moeda da conta. As taxas oficiais in-stream, in-feed e Shorts vêm diretamente da API e aparecem por campanha/rede. A relação genérica TrueView ÷ impressões NÃO é uma taxa por formato.</li><li>Idade, gênero, localização e dispositivos são relatórios separados com cobertura própria. A participação de cada categoria usa o denominador da própria dimensão, não o da visão geral.</li><li>Classificação por IDs confirmados, rótulos oficiais confirmados, nome inequívoco e consenso de grupos/criativos/vídeos. Origem, regra e confiança aparecem no detalhe do anúncio. Campanhas mistas, conflitantes ou sem evidência ficam em Outros / pendentes em todas as telas, sem rateio de investimento.</li><li>Cidades sem nome conhecido aparecem por ID. Moeda sem confirmação da API é exibida como “moeda da conta”.</li><li>Não deduza causalidade de horários ou CPV sem comparar objetivos e tipos de campanhas. As operações são somente de leitura.</li></ul></div></div>
+<script>
+(() => {
+  'use strict';
+  const $ = (s,root=document) => root.querySelector(s);
+  const $$ = (s,root=document) => [...root.querySelectorAll(s)];
+  const safe = x => String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const numeric = v => { const n = Number(v??0); return Number.isFinite(n) && n>=0 ? n : 0; };
+  const empty = () => ({impressions:0, views:0, cost:0, clicks:0, cpvWeighted:0, cpvViews:0});
+  const add = (o,r) => { for(const k of ['impressions','views','cost','clicks','cpvWeighted','cpvViews']) o[k]+=r[k]||0;return o; };
+  const sum = rows => rows.reduce((a,r)=>add(a,r),empty());
+  const fmt = new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0});
+  const n = v => fmt.format(v||0);
+  const short = v => v>=1e6?(v/1e6).toLocaleString('pt-BR',{maximumFractionDigits:2})+' mi':v>=1e3?(v/1e3).toLocaleString('pt-BR',{maximumFractionDigits:1})+' mil':n(v);
+  const per = v => (v*100).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
+  const states={program:'ALL',account:'ALL',network:'ALL',programMetric:'impressions',formatKey:'',period:365,page:'overview',trend:'views',heat:'views',search:'',sort:'views',picked:{d:1,h:8},motion:true};
+  const programs=[{id:'BDC',name:'BDC',color:'#4285f4'},{id:'EPTV1',name:'EPTV1',color:'#34a853'},{id:'EPTV2',name:'EPTV2',color:'#f9ab00'},{id:'OUTROS',name:'Outros / não classificados',color:'#8b93a6'}];
+  const weekdays=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const dayMap={SUNDAY:0,MONDAY:1,TUESDAY:2,WEDNESDAY:3,THURSDAY:4,FRIDAY:5,SATURDAY:6};
+  const deviceName={MOBILE:'Celular',DESKTOP:'Computador',TABLET:'Tablet',CONNECTED_TV:'TV conectada',OTHER:'Outro',UNKNOWN:'Não informado'};
+  const ageName={AGE_RANGE_18_24:'18–24',AGE_RANGE_25_34:'25–34',AGE_RANGE_35_44:'35–44',AGE_RANGE_45_54:'45–54',AGE_RANGE_55_64:'55–64',AGE_RANGE_65_UP:'65+',AGE_RANGE_UNDETERMINED:'Não determinado'};
+  const genderName={MALE:'Masculino',FEMALE:'Feminino',UNDETERMINED:'Não determinado'};
+  const dateLimits={max:''};let raw=null, loaded=null, data=null, model=null, heat=[];
+  states.inicio='';states.fim='';
+  const scope=r=>(states.program==='ALL'||(states.program==='OUTROS'?r.program==='OUTROS':r.program===states.program))&&(states.account==='ALL'||r.account===states.account)&&(states.network==='ALL'||r.network===states.network);
+  const money=v=>{if(v==null||!Number.isFinite(v))return '—';let code=data?.metadata?.currency_code||'';if(code&&/^[A-Z]{3}$/.test(code))return new Intl.NumberFormat('pt-BR',{style:'currency',currency:code,maximumFractionDigits:2,minimumFractionDigits:2}).format(v);return v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+' (moeda da conta)';};
+  const cpv=r=>r.views>0?r.cost/r.views:null;
+  const rate=r=>r.impressions>0?r.views/r.impressions:null;
+  const officialCPV=r=>r.cpvViews>0 ? r.cpvWeighted/r.cpvViews : null;
+  const officialCPVLabel=r=>officialCPV(r)===null?'—':money(officialCPV(r));
+  const asMoneyRatio=r=>cpv(r)===null?'—':money(cpv(r));
+  const asRate=r=>rate(r)===null?'—':per(rate(r));
+  const metric=r=>{
+    const m=r?.metrics||{},views=numeric(m.videoTrueviewViews);
+    const rawCPV=m.trueviewAverageCpv==null?null:Number(m.trueviewAverageCpv);
+    // O campo CPV vem em micros da moeda da conta; fazer a conversão ANTES de exibir.
+    const hasOfficial=views>0&&rawCPV!==null&&Number.isFinite(rawCPV)&&rawCPV>=0;
+    return {impressions:numeric(m.impressions),views,clicks:numeric(m.clicks),cost:numeric(m.costMicros)/1e6,
+      cpvWeighted:hasOfficial?(rawCPV/1e6)*views:0,cpvViews:hasOfficial?views:0};
+  };
+  // O backend é a única autoridade, inclusive quando a decisão é pendente.
+  const classify=r=>['BDC','EPTV1','EPTV2'].includes(r.programa)?r.programa:'OUTROS';
+  const programColor=p=>programs.find(a=>a.id===p)?.color||'#8b93a6';
+  const normal=(r,report)=>{
+    const c=r.campaign||{}, s=r.segments||{}, ad=r.adGroupAd?.ad||{}, account=String(r.sourceCustomerId||''),network=String(s.adNetworkType||'UNSPECIFIED');
+    let key='';
+    if(report==='criativos')key=account+'|'+String(c.id||'')+'|'+String(ad.id||'');
+    else if(report==='formatos')key=account+'|'+String(c.id||'')+'|'+network;
+    else if(report==='dispositivos')key=String(s.device||'UNKNOWN');
+    else if(report==='idade')key=String(r.adGroupCriterion?.ageRange?.type||'UNDETERMINED');
+    else if(report==='genero')key=String(r.adGroupCriterion?.gender?.type||'UNDETERMINED');
+    else if(report==='cidades')key=String(s.geoTargetCity||'NÃO_INFORMADA');
+    else if(report==='dia_hora')key=String(s.dayOfWeek||'')+'|'+String(s.hour??'');
+    return {...metric(r),program:classify(r),classification:r.classificacaoPrograma||{},adEvidence:r.evidenciaProgramaAnuncio||null,account,network,campaignId:String(c.id??''),campaignName:String(c.name??''),date:String(s.date||''),key,adId:String(ad.id||''),adType:String(ad.type||'NÃO INFORMADO'),adStatus:String(r.adGroupAd?.status||''),
+      formatRates:report==='formatos'?{
+        inStream:r.metrics?.videoTrueviewViewRateInStream??null,
+        inFeed:r.metrics?.videoTrueviewViewRateInFeed??null,
+        shorts:r.metrics?.videoTrueviewViewRateShorts??null,
+        p25:r.metrics?.videoQuartileP25Rate??null,p50:r.metrics?.videoQuartileP50Rate??null,
+        p75:r.metrics?.videoQuartileP75Rate??null,p100:r.metrics?.videoQuartileP100Rate??null}:null};
+  };
+  const group=(rows,keyfn)=>{
+    let m=new Map();for(const r of rows){const k=keyfn(r);if(!m.has(k))m.set(k,empty());add(m.get(k),r)}return m;
+  };
+  const buildModel=()=>{
+    const r=data?.relatorios||{};
+    const get=k=>(r[k]||[]).map(x=>normal(x,k)).filter(scope);
+    const c=get('campanhas');
+    return {campaigns:c, total:sum(c), byDate:group(c,x=>x.date), byProg:group(c,x=>x.program),byCampaign:group(c,x=>x.account+'|'+x.campaignId),
+      creative:get('criativos'),device:get('dispositivos'), age:get('idade'),gender:get('genero'),city:get('cidades'),hours:get('dia_hora'), formats:get('formatos')};
+  };
+  const range=()=>{
+    if(!data)return 'Sem dados';
+    const fmt=d=>{const [y,m,day]=String(d||'').split('-');return `${day}/${m}/${y}`};
+    return fmt(data.periodo_inicio)+' a '+fmt(data.periodo_fim);
+  };
+  const status=(msg,good=false)=>{const b=$('#dataBanner');b.textContent=msg;b.classList.toggle('ok',good)};
+  const validate=d=>{
+    if(!d||typeof d!=='object'||!d.relatorios||d.filtro_rede!=='ALL'||d.erros&&Object.keys(d.erros).length)throw new Error('Resposta da API inválida, parcial ou com erro de rede.');
+    for(let k of ['campanhas','criativos','dispositivos','idade','genero','cidades','dia_hora','formatos'])if(!Array.isArray(d.relatorios[k]))throw new Error('Relatório ausente: '+k);
+    if(!Array.isArray(d.customer_ids)||d.customer_ids.some(x=>!/^\d{10}$/.test(String(x))))throw new Error('ID do anunciante inválido na resposta.');
+    const count=dateCount(d.periodo_inicio,d.periodo_fim);
+    if(count<1||count!==Number(d.dias)||d.periodo_fim>dateLimits.max)throw new Error('Intervalo inválido na resposta da API.');
+    if(d.relatorios.campanhas.some(x=>!x.segments?.date))throw new Error('Campanhas sem data: impossível gerar evolução confiável.');
+    return d;
+  };
+  const dateCount=(inicio,fim)=>{
+    const parse=s=>{
+      if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return NaN;
+      const value=Date.parse(s+'T00:00:00Z');
+      return Number.isFinite(value)&&new Date(value).toISOString().slice(0,10)===s?value:NaN;
+    };
+    return (parse(fim)-parse(inicio))/86400000+1;
+  };
+  const updateDateControls=()=>{
+    for(const id of ['dateStart','dateEnd']){$('#'+id).max=dateLimits.max;$('#'+id).disabled=!!inflight;}
+    $('#applyDatesBtn').disabled=!!inflight||!dateLimits.max;
+    $('#dateHelp').textContent='Até ontem • sem limite de duração';
+  };
+  let requestNumber=0, lastLoadAt=0, inflight=null;
+  const loadPeriod=async (inicio, fim, opts={})=>{
+    const days=dateCount(inicio,fim);
+    if(!Number.isFinite(days)||days<1||fim>dateLimits.max){
+      status('Selecione datas válidas, com início até o fim e término até ontem.');
+      return;
+    }
+    const reqNo=++requestNumber;
+    if(inflight)inflight.abort();
+    inflight=new AbortController();
+    updateDateControls();
+    $('#refreshDataBtn').disabled=true;
+    status(opts.force?'Solicitando atualização direta à Google Ads API…':'Consultando '+days+' dias na Google Ads API (cache rápido quando disponível)…');
+    try{
+      const res=await fetch((opts.force?'/api/atualizar':'/api/relatorios')+'?'+new URLSearchParams({inicio,fim}),
+        {method:opts.force?'POST':'GET',cache:'no-store',signal:inflight.signal,
+         headers:{'X-Ads-Request':'dashboard'}});
+      const payload=await res.json();
+      if(!res.ok)throw new Error(payload.erro||'Falha ao consultar a API (HTTP '+res.status+')');
+      if(reqNo!==requestNumber)return;
+      const validated=validate(payload);
+      if(validated.periodo_inicio!==inicio||validated.periodo_fim!==fim)throw new Error('A API retornou um período diferente do solicitado');
+      data=validated;
+      states.period=days;states.inicio=inicio;states.fim=fim;
+      lastLoadAt=Date.now();
+      refresh();
+    }catch(e){
+      if(reqNo!==requestNumber||e.name==='AbortError')return;
+      data=null;refresh();
+      status('Não foi possível consultar '+days+' dias: '+e.message+'. A versão anterior não foi substituída por números incompletos.');
+    }finally{if(reqNo===requestNumber){inflight=null;$('#refreshDataBtn').disabled=false;updateDateControls();}}
+  };
+  const clearViews=()=>{
+    for(let id of ['kpiGrid','trendChart','programChart','insightGrid','creativeGrid','ageBars','genderBars','cities','deviceLegend','heatmap','hourDetail','weekBars','hourInsights','formatMetrics'])$('#'+id).innerHTML='';
+    $('#deviceDonut').style.background='#edf3fd';$('#deviceDominant').textContent='—';
+    $('#trendCaption').textContent='Sem dados carregados';$('#creativeMeta').textContent='';$('#rangeBadge').textContent='—';
+  };
+  const renderNav=()=>{$$('.navbtn').forEach(b=>{let active=b.dataset.page===states.page;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});$$('.view').forEach(v=>v.classList.toggle('active',v.id===states.page));$('#breadcrumb').textContent={overview:'Visão geral',creative:'Criativos',audience:'Público e regiões',hours:'Dias e horários'}[states.page]};
+  const renderKpis=()=>{
+    const r=model.total, f=sum(model.formats);let defs=[
+      ['Investimento',money(r.cost),'Investimento consolidado da seleção','¤','#4285f4','#ebf3ff'],
+      ['Visualizações TrueView',short(r.views),'Visualizações reportadas pelo Google Ads','▶','#34a853','#e9f9f0'],
+      ['Impressões',short(r.impressions),'Entrega total das campanhas','◉','#ee973b','#fff3e3'],
+      ['CPV médio TrueView',officialCPVLabel(f),'API oficial • ponderado pelas TrueView','↘','#845cda','#f2edff']];
+    $('#kpiGrid').innerHTML=defs.map(([label,val,sub,icon,col,bg],i)=>`<article class="kpi" style="--kcol:${col};--kbg:${bg};animation:enter .4s both;animation-delay:${i*.07}s"><div class="kpiicon">${icon}</div><div class="kpilabel">${label}</div><div class="kpivalue">${safe(val)}</div><div class="kpisub">${safe(sub)}</div></article>`).join('');
+  };
+  const renderTrend=()=>{
+    // Eixo horizontal representa cada dia de calendário, inclusive os dias sem entrega.
+    if(!data?.periodo_inicio||!data?.periodo_fim)return;
+    const first=new Date(data.periodo_inicio+'T12:00:00Z'),last=new Date(data.periodo_fim+'T12:00:00Z');
+    const points=[];
+    for(let at=new Date(first);at<=last;at.setUTCDate(at.getUTCDate()+1)){
+      const d=at.toISOString().slice(0,10);
+      points.push([d,model.byDate.get(d)||empty()]);
+    }
+    if(!points.length)return;
+    const w=850,h=255,l=58,t=20,rr=18,b=35,ph=h-t-b,pw=w-l-rr;
+    const max=Math.max(1,...points.map(p=>p[1][states.trend]))*1.12;
+    const coords=points.map(([d,o],i)=>({x:l+pw*(i/Math.max(1,points.length-1)),y:t+ph-ph*o[states.trend]/max,d,v:o[states.trend]}));
+    const line=coords.map((q,i)=>(i?'L':'M')+q.x.toFixed(1)+' '+q.y.toFixed(1)).join(' ');
+    const axes=Array.from({length:5},(_,i)=>{let y=t+i*ph/4;return `<line stroke="#e8eff8" x1="${l}" x2="${w-rr}" y1="${y}" y2="${y}"/><text x="${l-9}" y="${y+4}" text-anchor="end" font-size="11" fill="#8d9ab0">${safe(short(max*(4-i)/4))}</text>`}).join('');
+    const marks=coords.filter((q,i)=>points.length<=30||i%Math.max(1,Math.floor(points.length/12))===0||i===points.length-1).map(q=>`<circle cx="${q.x}" cy="${q.y}" r="3" fill="#fff" stroke="#4285f4" stroke-width="2"><title>${q.d}: ${states.trend==='views'?n(q.v)+' visualizações':money(q.v)}</title></circle>`).join('');
+    const ticks=coords.filter((q,i)=>i===0||i===coords.length-1||i%Math.max(1,Math.floor(coords.length/5))===0).map(q=>`<text x="${q.x}" y="${h-9}" text-anchor="middle" font-size="10" fill="#8d9ab0">${q.d.slice(8)}/${q.d.slice(5,7)}</text>`).join('');
+    $('#trendChart').innerHTML=`<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto" role="img" aria-label="Evolução diária em calendário">${axes}<path d="${line}" stroke="#4285f4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" class="animated-trend"/>${marks}${ticks}</svg>`;
+    $('#trendCaption').textContent=`${points.length} dias de calendário • ${model.byDate.size} dias com entrega • dias sem registros são zero, não estimativas.`;
+  };
+  const bars=(items,renderName)=>{
+    if(!items.length)return '<p class="empty-message">Sem registros para este filtro.</p>';
+    const type=states.programMetric;
+    const max=Math.max(1,...items.map(v=>v.r[type]||0));
+    return items.map(o=>`<div class="realbarrow"><div class="realbarhead"><span><b>${safe(renderName(o))}</b></span><span>${type==='cost'?safe(money(o.r.cost)):short(o.r[type])+' '+(type==='views'?'TrueView':'impressões')}</span></div><div class="realtrack"><span style="width:${o.r[type]?Math.max(1,o.r[type]/max*100):0}%;background:${programColor(o.p||'BDC')}"></span></div></div>`).join('');
+  };
+  const renderProgram=()=>{
+    const all=states.program==='ALL'?programs.map(p=>({...p,p:p.id,r:model.byProg.get(p.id)||empty()})):
+      ([ ...model.byCampaign].sort((a,b)=>b[1][states.programMetric]-a[1][states.programMetric]).slice(0,8).map(([id,r])=>({name:model.campaigns.find(c=>c.account+'|'+c.campaignId===id)?.campaignName||id,p:states.program,id,r})));
+    $('#compareTitle').textContent=states.program==='ALL'?'Participação por programa':'Campanhas com maior entrega';
+    $('#compareSubtitle').textContent='Comparação por '+({cost:'investimento',impressions:'impressões',views:'TrueView'}[states.programMetric]);
+    $('#programChart').innerHTML=bars(all,o=>o.name);
+    $$('#programMetric [data-metric]').forEach(b=>b.classList.toggle('active',b.dataset.metric===states.programMetric));
+  };
+  const renderFormats=()=>{
+    const list=model.formats.filter(x=>x.views>0).sort((a,b)=>b.views-a.views);
+    const select=$('#formatCampaignSelect');if(!select)return;
+    select.innerHTML=list.map(x=>`<option value="${safe(x.key)}">${safe(x.campaignName)} • ${safe((data.metadata.account_names||{})[x.account]||x.account)} • ${safe(x.network)}</option>`).join('');
+    if(!list.some(x=>x.key===states.formatKey))states.formatKey=list[0]?.key||'';
+    select.value=states.formatKey;
+    const r=list.find(x=>x.key===states.formatKey);
+    const target=$('#formatMetrics');
+    if(!r){target.innerHTML='<p class="empty-message">Sem visualizações TrueView para esta seleção.</p>';return}
+    const fmt=v=>v===null||v===undefined?'—':per(Number(v));
+    const vals=[['CPV médio oficial',officialCPVLabel(r)],['In-stream',fmt(r.formatRates?.inStream)],['In-feed',fmt(r.formatRates?.inFeed)],['Shorts',fmt(r.formatRates?.shorts)],['25% assistido',fmt(r.formatRates?.p25)],['50% assistido',fmt(r.formatRates?.p50)],['75% assistido',fmt(r.formatRates?.p75)],['100% assistido',fmt(r.formatRates?.p100)]];
+    target.innerHTML=vals.map(([k,v])=>`<div class="format-kpi"><small>${safe(k)}</small><strong>${safe(v)}</strong></div>`).join('');
+    $('#formatSummary').textContent=`${short(r.views)} TrueView • ${safe(r.campaignName)} • ${safe(r.network)}. Taxas oficiais desta campanha e rede; não são médias simples de outras campanhas.`;
+  };
+  const renderInsights=()=>{
+    const all=model.total,unknown=model.byProg.get('OUTROS')||empty();
+    let things=[['Redes com entrega',String(new Set(model.campaigns.filter(r=>r.impressions>0).map(r=>r.network)).size),'Redes com impressões na seleção','#4285f4'],['Cliques na seleção',short(all.clicks),'Não equivalem a visualizações TrueView','#34a853'],['Campanhas sem classificação',short(unknown.impressions)+' impressões',states.program==='ALL'?'Acompanhar para classificar BDC/EPTV1/EPTV2':'Classificação fora da seleção','#f9ab00']];
+    $('#insightGrid').innerHTML=things.map(([name,v,detail,color])=>`<article class="insight" style="border-top:4px solid ${color}"><span class="insight-kicker">${safe(name)}</span><strong>${safe(v)}</strong><p>${safe(detail)}</p></article>`).join('');
+  };
+  const currentCreatives=()=>{
+    const m=new Map();for(const row of model.creative){if(!m.has(row.key))m.set(row.key,{key:row.key,id:row.adId,account:row.account,program:row.program,name:row.campaignName,type:row.adType,status:row.adStatus,classification:row.classification,adEvidence:row.adEvidence,r:empty()});add(m.get(row.key).r,row)}return [...m.values()];
+  };
+  const renderCreatives=()=>{
+    const text=states.search.toLowerCase();let list=currentCreatives().filter(x=>(x.name+' '+x.id+' '+x.type).toLowerCase().includes(text));
+    list.sort((a,b)=>states.sort==='cpv'?(officialCPV(a.r)??Infinity)-(officialCPV(b.r)??Infinity):states.sort==='rate'?(rate(b.r)??-1)-(rate(a.r)??-1):b.r[states.sort]-a.r[states.sort]);
+    $('#creativeMeta').textContent=`${n(list.length)} anúncios encontrados • Fonte: IDs de anúncio e campanhas da Google Ads API. Miniaturas não estão disponíveis neste extrato.`;
+    $('#creativeGrid').innerHTML=list.length?list.slice(0,80).map(x=>`<button type="button" class="realcreative" data-ad="${safe(x.key)}" style="--pcolor:${programColor(x.program)}"><div class="realtile"><div class="realtileicon">▶</div><span>ANÚNCIO ${safe(x.id)}</span></div><div class="realbody"><span class="realbadge">${safe(x.program)}</span><span class="realbadge">${safe(x.type)}</span><h3>${safe(x.name||'Campanha sem nome')}</h3><div class="realnumbers"><div><small>TrueView</small><strong>${short(x.r.views)}</strong></div><div><small>CPV oficial</small><strong>${safe(officialCPVLabel(x.r))}</strong></div></div><small class="realhint">Detalhar anúncio</small></div></button>`).join(''):'<p class="empty-message">Nenhum anúncio no período ou na pesquisa.</p>';
+    $$('#creativeGrid [data-ad]').forEach(b=>b.onclick=()=>openDrawer(b.dataset.ad));
+  };
+  const renderBars=(source,dest,names)=>{
+    const m=group(source,r=>r.key);let arr=[...m].sort((a,b)=>b[1].views-a[1].views),max=Math.max(1,...arr.map(o=>o[1].views)),sumViews=arr.reduce((a,o)=>a+o[1].views,0);
+    $('#'+dest).innerHTML=arr.length?arr.map(([key,r])=>`<div class="realbarrow"><div class="realbarhead"><span><b>${safe(names[key]||key)}</b></span><span>${short(r.views)} · ${sumViews?per(r.views/sumViews):'—'}</span></div><div class="realtrack"><span style="width:${r.views/max*100}%;background:${dest==='ageBars'?'#4285f4':'#34a853'}"></span></div></div>`).join(''):'<p class="empty-message">Sem registros neste período.</p>';
+  };
+  const renderCities=()=>{
+    const rows=[...group(model.city,r=>r.key)].sort((a,b)=>b[1].views-a[1].views).slice(0,12),max=Math.max(1,...rows.map(x=>x[1].views));
+    $('#cities').innerHTML=rows.length?rows.map(([key,r],i)=>`<div class="realbarrow"><div class="realbarhead"><b>${i+1}. ${safe((data?.metadata?.city_names||{})[key]||('Localidade ID '+key))}</b><span>${short(r.views)} TrueView</span></div><div class="realtrack"><span style="width:${r.views/max*100}%;background:#7758e8"></span></div></div>`).join('')+'<p class="panelnote">IDs geográficos preservados quando o nome da cidade ainda não foi resolvido.</p>':'<p class="empty-message">Sem registros geográficos.</p>';
+  };
+  const renderDevices=()=>{
+    const list=[...group(model.device,r=>r.key)].sort((a,b)=>b[1].views-a[1].views),total=list.reduce((a,x)=>a+x[1].views,0),colors=['#4285f4','#34a853','#fbbc04','#ea4335','#8b93a6'];let progress=0;
+    $('#deviceDonut').style.background=list.length&&total?`conic-gradient(${list.map(([k,r],i)=>{let start=progress;progress+=r.views/total*100;return `${colors[i%colors.length]} ${start.toFixed(2)}% ${progress.toFixed(2)}%`}).join(',')})`:'#eef3fb';
+    $('#deviceDominant').textContent=list.length?deviceName[list[0][0]]||list[0][0]:'—';
+    $('#deviceLegend').innerHTML=list.length?list.map(([key,r],i)=>`<div class="device-line"><span class="dlabel"><i style="--dc:${colors[i%colors.length]}"></i>${safe(deviceName[key]||key)}</span><span><b>${total?per(r.views/total):'—'}</b><small>Custo total/TrueView ${safe(asMoneyRatio(r))}</small></span></div>`).join(''):'<p class="empty-message">Sem registros.</p>';
+  };
+  const renderHeat=()=>{
+    heat=Array.from({length:7},()=>Array.from({length:24},()=>empty()));
+    for(let r of model.hours){let [day,h]=r.key.split('|'),d=dayMap[day],hour=Number(h);if(d===undefined||!Number.isInteger(hour)||hour<0||hour>23)continue;add(heat[d][hour],r)}
+    let values=heat.flat().filter(r=>r.views>0).map(r=>states.heat==='views'?r.views:cpv(r)).filter(v=>v!==null),max=Math.max(1,...values),min=Math.min(...values,0);
+    let html='<div class="head"></div>'+Array.from({length:24},(_,h)=>`<div class="head">${String(h).padStart(2,'0')}</div>`).join('');
+    for(let d=0;d<7;d++){html+=`<div class="weekday">${weekdays[d]}</div>`;for(let h=0;h<24;h++){
+      const r=heat[d][h],v=states.heat==='views'?r.views:cpv(r);let level=v===null||r.views===0?0:Math.max(.12,Math.min(1,(v-min)/Math.max(1,max-min)));
+      const rgb=states.heat==='views'?'66,133,244':'234,67,53';
+      html+=`<button type="button" class="heatcell ${states.picked.d===d&&states.picked.h===h?'picked':''}" data-day="${d}" data-hour="${h}" style="background:${level?`rgba(${rgb},${(.14+.8*level).toFixed(2)})`:'#f1f4f9'}" title="${weekdays[d]} ${h}h: ${n(r.views)} TrueView, custo total/TrueView ${safe(asMoneyRatio(r))}" aria-label="${weekdays[d]} ${h}h: ${n(r.views)} visualizações"></button>`;
+    }}
+    $('#heatmap').innerHTML=html;
+    $$('#heatmap .heatcell').forEach(b=>b.onclick=()=>{states.picked={d:Number(b.dataset.day),h:Number(b.dataset.hour)};renderHeat()});
+    $('#heatLegend').innerHTML=`<span>${states.heat==='views'?'Menos TrueView':'Menor custo total/TrueView'}</span>`+[.15,.3,.5,.75,.95].map(a=>`<span style="background:rgba(${states.heat==='views'?'66,133,244':'234,67,53'},${a})"></span>`).join('')+`<span>${states.heat==='views'?'Mais TrueView':'Maior custo total/TrueView'}</span>`;
+    const r=heat[states.picked.d][states.picked.h];
+    $('#hourDetail').innerHTML=`<div><div class="big">${weekdays[states.picked.d]} • ${String(states.picked.h).padStart(2,'0')}h</div><p>Acumulado do intervalo no período selecionado</p></div><div class="hours-numbers"><div><small>TrueView</small><b>${short(r.views)}</b></div><div><small>Investimento</small><b>${safe(money(r.cost))}</b></div><div><small>Custo total / TrueView</small><b>${safe(asMoneyRatio(r))}</b></div></div>`;
+    const days=heat.map(row=>sum(row).views),dmax=Math.max(1,...days);
+    $('#weekBars').innerHTML=days.map((v,i)=>`<div class="daycol" title="${weekdays[i]}: ${n(v)} TrueView"><div class="daybar" style="--dh:${v?Math.max(2,v/dmax*100):0}%"><strong class="dayvalue">${n(v)}</strong></div><span>${weekdays[i]}</span></div>`).join('');
+    const cells=heat.flatMap((row,d)=>row.map((r,h)=>({r,d,h}))).filter(x=>x.r.views>0);
+    const peak=[...cells].sort((a,b)=>b.r.views-a.r.views)[0];
+    const avg= model.hours.length?sum(model.hours):empty();
+    const hourRatio= avg.views?peak.r.views/avg.views:0;
+    $('#hourInsights').innerHTML=peak?`<div class="realbarrow"><b>Maior entrega</b><p>${weekdays[peak.d]} às ${peak.h}h • ${n(peak.r.views)} TrueView</p></div><div class="realbarrow"><b>Participação no período</b><p>${per(hourRatio)} das visualizações registradas no horário</p></div><div class="realbarrow"><b>Leitura</b><p>Volume não indica causalidade nem melhor horário para publicação.</p></div>`:'<p class="empty-message">Sem veiculação registrada para o período.</p>';
+  };
+  const openDrawer=key=>{
+    const c=currentCreatives().find(x=>x.key===key);if(!c)return;
+    $('#drawerContent').innerHTML=`<h2>Anúncio ${safe(c.id)}</h2><p>${safe(c.program)} · ${safe(c.type)} · ${states.period} dias</p><div class="drawer-section"><h3>Campanha</h3><p>${safe(c.name)}</p></div><div class="summary-metrics"><div><small>TrueView</small><b>${n(c.r.views)}</b></div><div><small>Investimento</small><b>${safe(money(c.r.cost))}</b></div><div><small>CPV oficial</small><b>${safe(officialCPVLabel(c.r))}</b></div><div><small>TrueView / impressões (bruto)</small><b>${asRate(c.r)}</b></div></div><div class="drawer-section"><h3>Metodologia</h3><p class="tiptext">Dados reais agregados da Google Ads API. Os filtros usam o programa da campanha em todas as telas. Evidências de campanhas mistas não distribuem investimento entre programas. Não compare eficiência de objetivos diferentes como se fossem equivalentes.</p></div>`;
+    const d=c.classification, e=c.adEvidence;
+    $('#drawerContent').innerHTML+=`<div class="drawer-section"><h3>Classificação auditável</h3><p>Origem: ${safe(d.origem||'indisponível')} • Regra: ${safe(d.regra||'indisponível')} • Confiança: ${safe(d.confianca||'pendente')}</p><p>${safe(JSON.stringify(d.evidencias||[]))}</p>${e?`<p>Evidência do anúncio: ${safe(e.classificacao.programa)} • ${safe(e.classificacao.regra)}. Esta evidência não substitui o programa da campanha.</p><p>${safe(e.videos.map(v=>[v.youtubeVideoId,v.youtubeVideoTitle].filter(Boolean).join(' — ')).join('; '))}</p>`:''}</div>`;
+    $('#drawerOverlay').classList.add('show');$('#drawerClose').focus();
+  };
+  const closeDrawer=()=>$('#drawerOverlay').classList.remove('show');
+  const render=()=>{
+    updateDateControls();renderNav();
+    if(!data){clearViews();return;}
+    model=buildModel();
+    $('#rangeBadge').textContent=range();
+    $('#overview-sub').textContent=`${states.program==='ALL'?'Todos os programas':states.program==='OUTROS'?'Campanhas não classificadas':states.program} • ${states.account==='ALL'?'Duas contas':(data.metadata.account_names||{})[states.account]||states.account} • ${states.network==='ALL'?'Todas as redes':states.network} • ${range()}.`;
+    $('#sourceBadge').textContent=`V6.1 • ADS API • ${data.consulta?.origem==='cache_memoria'?'CACHE':'DIRETO'}`;
+    $('#sourceBadge').classList.add('live');
+    const meta=data.metadata||{};
+    const c=model.total;
+    const pending=new Set(model.campaigns.filter(r=>r.program==='OUTROS').map(r=>r.account+'|'+r.campaignId)).size;
+    const originLabel=data.consulta?.origem==='cache_memoria'?`Cache em memória (${Math.floor((data.consulta?.idade_segundos||0)/60)} min)`:'Consulta direta à API';
+    const timeLabel=data.consulta?.consultado_em?new Date(data.consulta.consultado_em).toLocaleString('pt-BR'):'';
+    status(`${originLabel} • ${timeLabel} • ${range()} • ${n(c.impressions)} impressões • ${meta.currency_code?'Moeda: '+meta.currency_code:'Moeda não confirmada'} • ${states.account==='ALL'?'2 contas':meta.account_names?.[states.account]||states.account} • ${states.network==='ALL'?'Todas as redes':states.network} • ${pending} campanha(s) em Outros / pendentes; filtro por campanha`,true);
+    renderKpis();renderTrend();renderProgram();renderFormats();renderInsights();renderCreatives();
+    renderBars(model.age,'ageBars',ageName);renderBars(model.gender,'genderBars',genderName);renderCities();renderDevices();renderHeat();
+  };
+  const refresh=render;
+  const exportCSV=()=>{
+    if(!data||!model)return;
+    let head=[],rows=[];
+    const from=r=>[r.account,r.network,r.program,r.campaignId,r.campaignName,r.impressions,r.views,r.cost.toFixed(6),r.clicks];
+    if(states.page==='overview'){head=['Conta','Rede','Programa','ID_Campanha','Campanha','Impressoes','TrueView','Custo_Moeda_Conta','Cliques']; rows=model.campaigns.map(from)}
+    else if(states.page==='creative'){head=['Conta','Programa','ID_Anuncio','Campanha','Tipo','Impressoes','TrueView','Custo_Moeda_Conta','Cliques'];rows=currentCreatives().map(x=>[x.account,x.program,x.id,x.name,x.type,x.r.impressions,x.r.views,x.r.cost.toFixed(6),x.r.clicks])}
+    else if(states.page==='audience'){head=['Relatorio','Conta','Rede','Programa','Categoria','Impressoes','TrueView','Custo_Moeda_Conta','Cliques']; rows=[...['age','gender','city','device'].flatMap((k,i)=>model[k].map(r=>[['Idade','Gênero','Cidade_ID','Dispositivo'][i],r.account,r.network,r.program,r.key,r.impressions,r.views,r.cost.toFixed(6),r.clicks]))]}
+    else {head=['Conta','Rede','Programa','Dia','Hora','Impressoes','TrueView','Custo_Moeda_Conta','Cliques'];rows=model.hours.map(r=>[r.account,r.network,r.program,r.key.split('|')[0],r.key.split('|')[1],r.impressions,r.views,r.cost.toFixed(6),r.clicks])}
+    const csv=[head,...rows].map(a=>a.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(';')).join('\r\n');
+    const url=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`ads_eptv_${states.page}_${states.program}_${states.inicio}_${states.fim}_${states.account}_${states.network}_${data?.metadata?.currency_code||'MOEDA_NAO_INFORMADA'}.csv`;a.click();URL.revokeObjectURL(url);
+  };
+  $('#accountFilter').onchange=e=>{states.account=e.target.value;render()};
+  $('#networkFilter').onchange=e=>{states.network=e.target.value;render()};
+  $('#programMetric').onclick=e=>{const b=e.target.closest('[data-metric]');if(b){states.programMetric=b.dataset.metric;renderProgram()}};
+  $('#formatCampaignSelect').onchange=e=>{states.formatKey=e.target.value;renderFormats()};
+  $('#programFilter').onclick=e=>{let b=e.target.closest('[data-prog]');if(!b)return;states.program=b.dataset.prog;$$('#programFilter button').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b))});refresh()};
+  $('#periodFilter').onsubmit=e=>{e.preventDefault();loadPeriod($('#dateStart').value,$('#dateEnd').value)};
+  $$('.navbtn').forEach(b=>b.onclick=()=>{states.page=b.dataset.page;renderNav();window.scrollTo({top:0,behavior:states.motion?'smooth':'auto'})});
+  $('#creativeSearch').oninput=e=>{states.search=e.target.value;model&&renderCreatives()};
+  $('#creativeSort').onchange=e=>{states.sort=e.target.value;model&&renderCreatives()};
+  $('#trendMetric').onclick=e=>{let b=e.target.closest('[data-metric]');if(!b)return;states.trend=b.dataset.metric;model&&renderTrend();$$('#trendMetric button').forEach(x=>x.classList.toggle('active',x===b))};
+  $('#heatMetric').onclick=e=>{let b=e.target.closest('[data-metric]');if(!b)return;states.heat=b.dataset.metric;model&&renderHeat();$$('#heatMetric button').forEach(x=>x.classList.toggle('active',x===b))};
+  $('#downloadBtn').onclick=exportCSV;
+  $('#motionBtn').onclick=()=>{states.motion=!states.motion;document.documentElement.dataset.motion=states.motion?'on':'off';$('#motionText').textContent=states.motion?'Efeitos ligados':'Efeitos desligados'};
+  $('#drawerClose').onclick=closeDrawer;$('#drawerOverlay').onclick=e=>{if(e.target.id==='drawerOverlay')closeDrawer()};
+  const showInfo=()=>{$('#infoModal').classList.add('show');$('#infoClose').focus()};
+  const closeInfo=()=>$('#infoModal').classList.remove('show');
+  $('#infoBtn').onclick=showInfo;$('#footerInfo').onclick=showInfo;$('#infoClose').onclick=closeInfo;$('#infoModal').onclick=e=>{if(e.target.id==='infoModal')closeInfo()};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDrawer();closeInfo()}});
+  $('#refreshDataBtn').onclick=()=>{if(states.inicio)loadPeriod(states.inicio,states.fim,{force:true})};
+  const boot=async()=>{
+    status('Conectando ao servidor local e preparando as duas contas da Google Ads API…');
+    try{
+      const req=await fetch('/api/status',{cache:'no-store'});
+      const res=await req.json();
+      if(!req.ok)throw new Error(res.erro||'Servidor local indisponível');
+      if(res.modo!=='api_dinamica')throw new Error('Servidor antigo encontrado. Reinicie o painel com o script da V6.1.');
+      if(!res.intervalo_personalizado||!/^\d{4}-\d{2}-\d{2}$/.test(res.data_maxima))throw new Error('Reinicie o servidor para habilitar o calendário');
+      dateLimits.max=res.data_maxima;
+      const first=new Date(dateLimits.max+'T00:00:00Z');first.setUTCDate(first.getUTCDate()-364);
+      $('#dateStart').value=first.toISOString().slice(0,10);$('#dateEnd').value=dateLimits.max;
+      await loadPeriod($('#dateStart').value,$('#dateEnd').value);
+    }catch(e){status('Falha ao inicializar consultas: '+e.message+' • Execute scripts\\05_iniciar_dashboard_local.ps1 com a atualização V6.1.');}
+    renderNav();updateDateControls();
+  };
+  const autoRefresh=()=>{if(!document.hidden&&lastLoadAt&&Date.now()-lastLoadAt>=15*60*1000&&!inflight)loadPeriod(states.inicio,states.fim);};
+  window.setInterval(autoRefresh,5*60*1000);
+  document.addEventListener('visibilitychange',autoRefresh);
+  boot();
+})();
+
+</script>
+</body>
+</html>
