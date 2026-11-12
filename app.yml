@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "name": "GOOGLE_ADS_INTELLIGENCE_REVIEW",
+  "database": "EPTV_APPS",
+  "schema": "ADS_REVIEW",
+  "query_warehouse": "EPTV_APPS_QUERY_WH",
+  "build_job_location": "EPTV_APPS.ADS_BUILDS",
+  "label": "Google Ads Intelligence — homologação",
+  "description": "EPTV V6.1 — leitura dinâmica Google Ads; validação pré-produção",
+  "auto_resume": true,
+  "auto_suspend_secs": 900,
+  "min_instances": 1,
+  "max_instances": 1,
+  "environment_variables": [
+    {"name": "ADS_RUNTIME_MODE", "value": "snowflake"},
+    {"name": "ADS_DASHBOARD_CACHE_SECONDS", "value": "900"}
+  ],
+  "secrets": [
+    {"name": "GOOGLE_ADS_SERVICE_ACCOUNT", "secret": "EPTV_APPS.ADS_SECRETS.GOOGLE_ADS_SERVICE_ACCOUNT"}
+  ],
+  "external_access_integrations": ["EPTV_GOOGLE_ADS_EAI"],
+  "ignore": [
+    ".git", ".github", ".env*", "**/.env*", "**/*credentials*", "**/*.pem", "**/*.key",
+    "**/*.p12", "**/*.pfx", "**/*.bak*", "**/*_backup.*", "**/dados_privados/**",
+    "**/snapshots/**", "backups", "node_modules", "dist", ".migration-package", "docs", "tests", "backend", "scripts"
+  ],
+  "install": {"commands": [["npm", "ci", "--ignore-scripts"]]},
+  "build": {"commands": [["npm", "run", "build"]]},
+  "run": {"command": ["node", "dist/server.mjs"]}
+}

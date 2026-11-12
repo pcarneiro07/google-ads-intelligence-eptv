@@ -1,4 +1,19 @@
-# Google Ads Intelligence — EPTV · Pacote V4
+# Google Ads Intelligence — EPTV V6.1
+
+Esta branch prepara o dashboard atual para **Snowflake App Runtime**, preservando o backend Python local e o frontend existente. Não houve publicação ou deploy. Leia o [plano de migração e implantação](docs/MIGRACAO_SNOWFLAKE.md), incluindo permissões, Secrets/EAI, custos e critérios de homologação.
+
+- Referência local: branch `local-v6.1`; migração: `migration/snowflake-app-runtime`.
+- Uso local existente: `scripts/05_iniciar_dashboard_local.ps1` em `127.0.0.1:8765`.
+- Regra metodológica: [baseline validada](docs/BASELINE_VALIDADA.md).
+- Testes: `python -m unittest discover -s tests -p test_v61.py -q`, `npm test`, `npm run test:frontend`.
+- Contrato: `python migration/export_reference.py --check`; ao alterar fontes, regenerar sem `--check` e revisar o diff.
+- Build: `npm ci --ignore-scripts` e `npm run build` (Node.js 22–24; runtime sem dependências npm externas).
+- Publicação segura: `node migration/check-publication.mjs` e `node migration/prepare-package.mjs`.
+- `app.yml` contém somente o destino de homologação proposto, não produção. Não executar deploy antes da revisão.
+
+Os testes não acessam a Google Ads API. O exportador usa AST sem carregar `.env`; não contém respostas reais. `.migration-package/` é criado a partir de 10 arquivos permitidos, sem copiar a pasta corporativa inteira. Se já existir, o preparador para sem sobrescrevê-lo. Credenciais, auditorias detalhadas e ferramentas legadas com outros números corporativos continuam locais, fora da publicação.
+
+## Registro histórico do pacote V4 (não usar como instrução de deploy atual)
 
 Este ZIP reúne o **protótipo visual V4** e o **extrator inicial do Google Ads API**, em pastas separadas.
 

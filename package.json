@@ -1,0 +1,14 @@
+{
+  "name": "google-ads-intelligence-eptv-runtime",
+  "version": "6.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22 <25"},
+  "scripts": {
+    "build": "node migration/build.mjs",
+    "start": "node dist/server.mjs",
+    "test": "node --test migration/tests/*.test.mjs",
+    "test:frontend": "node tests/test_classificacao_frontend.cjs",
+    "check:publication": "node migration/check-publication.mjs"
+  }
+}

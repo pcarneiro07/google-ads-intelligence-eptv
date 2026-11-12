@@ -1,0 +1,32 @@
+name: Migration regression checks
+on:
+  pull_request:
+  push:
+    branches: [migration/snowflake-app-runtime]
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r backend/requirements.txt
+      - run: npm ci --ignore-scripts
+      - run: python migration/export_reference.py --check
+      - run: node migration/check-publication.mjs
+      - run: python -m unittest discover -s tests -p test_v61.py -q
+      - run: npm test
+      - run: npm run test:frontend
+      - run: npm run build
+      - run: python -m py_compile backend/dashboard_server.py backend/extrair_google_ads.py backend/classificacao_programas.py
+      - run: node migration/prepare-package.mjs
+      # No real Ads credentials, snapshots or production API calls in CI.

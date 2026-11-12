@@ -1,0 +1,43 @@
+{
+  "version": "2026-11-12.1",
+  "reports": {
+    "campanhas": "SELECT campaign.id, campaign.name, campaign.status, segments.date, segments.ad_network_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.video_trueview_views FROM campaign WHERE segments.date BETWEEN '__START__' AND '__END__' ORDER BY segments.date",
+    "criativos": "SELECT campaign.id, campaign.name, ad_group_ad.ad.id, ad_group_ad.ad.type, ad_group_ad.status, segments.ad_network_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.video_trueview_views, metrics.trueview_average_cpv FROM ad_group_ad WHERE segments.date BETWEEN '__START__' AND '__END__'",
+    "dispositivos": "SELECT campaign.id, campaign.name, segments.device, segments.ad_network_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.video_trueview_views FROM campaign WHERE segments.date BETWEEN '__START__' AND '__END__'",
+    "idade": "SELECT campaign.id, campaign.name, ad_group_criterion.age_range.type, segments.ad_network_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.video_trueview_views FROM age_range_view WHERE segments.date BETWEEN '__START__' AND '__END__'",
+    "genero": "SELECT campaign.id, campaign.name, ad_group_criterion.gender.type, segments.ad_network_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.video_trueview_views FROM gender_view WHERE segments.date BETWEEN '__START__' AND '__END__'",
+    "cidades": "SELECT campaign.id, campaign.name, segments.geo_target_city, segments.ad_network_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.video_trueview_views FROM geographic_view WHERE segments.date BETWEEN '__START__' AND '__END__'",
+    "dia_hora": "SELECT campaign.id, campaign.name, segments.day_of_week, segments.hour, segments.ad_network_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.video_trueview_views FROM campaign WHERE segments.date BETWEEN '__START__' AND '__END__'",
+    "formatos": "SELECT campaign.id, campaign.name, segments.ad_network_type, metrics.video_trueview_views, metrics.trueview_average_cpv, metrics.video_trueview_view_rate_in_stream, metrics.video_trueview_view_rate_in_feed, metrics.video_trueview_view_rate_shorts, metrics.video_quartile_p25_rate, metrics.video_quartile_p50_rate, metrics.video_quartile_p75_rate, metrics.video_quartile_p100_rate FROM campaign WHERE segments.date BETWEEN '__START__' AND '__END__'"
+  },
+  "inventory": {
+    "campaigns": "SELECT campaign.id, campaign.name, campaign.status, campaign.labels FROM campaign WHERE campaign.status IN ('ENABLED','PAUSED','REMOVED')",
+    "labels": "SELECT label.resource_name, label.name FROM label",
+    "ads": "SELECT campaign.id, ad_group.id, ad_group.name, ad_group.labels, ad_group_ad.ad.id, ad_group_ad.ad.name, ad_group_ad.ad.type, ad_group_ad.labels, ad_group_ad.ad.video_ad.video.asset, ad_group_ad.ad.video_ad.in_feed.headline, ad_group_ad.ad.video_ad.in_stream.action_headline, ad_group_ad.ad.video_responsive_ad.headlines, ad_group_ad.ad.video_responsive_ad.long_headlines, ad_group_ad.ad.video_responsive_ad.descriptions, ad_group_ad.ad.video_responsive_ad.videos, ad_group_ad.ad.demand_gen_video_responsive_ad.headlines, ad_group_ad.ad.demand_gen_video_responsive_ad.long_headlines, ad_group_ad.ad.demand_gen_video_responsive_ad.descriptions, ad_group_ad.ad.demand_gen_video_responsive_ad.videos, ad_group_ad.ad.responsive_search_ad.headlines, ad_group_ad.ad.responsive_search_ad.descriptions, ad_group_ad.ad.responsive_display_ad.headlines, ad_group_ad.ad.responsive_display_ad.long_headline, ad_group_ad.ad.responsive_display_ad.descriptions FROM ad_group_ad WHERE campaign.status IN ('ENABLED','PAUSED','REMOVED') AND ad_group.status IN ('ENABLED','PAUSED','REMOVED') AND ad_group_ad.status IN ('ENABLED','PAUSED','REMOVED')",
+    "assets": "SELECT asset.resource_name, asset.youtube_video_asset.youtube_video_id, asset.youtube_video_asset.youtube_video_title FROM asset WHERE asset.type = 'YOUTUBE_VIDEO'"
+  },
+  "accounts": {
+    "7182459480": "Promo",
+    "5498287982": "EPTV Institucional"
+  },
+  "manager": "9234046127",
+  "apiVersion": "v26",
+  "mapping": {
+    "7182459480:20973111280": "EPTV2",
+    "7182459480:21846169165": "BDC",
+    "7182459480:21869675883": "EPTV1",
+    "7182459480:22019085597": "BDC",
+    "7182459480:22019887866": "EPTV1",
+    "7182459480:22817442213": "BDC"
+  },
+  "labels": {},
+  "sourceHashes": {
+    "backend/extrair_google_ads.py": "41c6b27d805cf294c961a9083b2548ca1841cde659f3290885bbf36c38be9dc2",
+    "backend/dashboard_server.py": "3f0626391417be70d1550d87a363aa6b8c1511a392c735fe00dd0407171e0cdc",
+    "backend/classificacao_programas.py": "21fb6a2170812b240bd179710adba634c8dc4b48af01c82b172e3f0729a11a5b",
+    "backend/programas.json": "130730042a0ccbf11d5c167b3502dbfcdc3b3fecf39ac2daa1a046100af9eeb1",
+    "backend/rotulos_programas.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "frontend/index.html": "0abd23a59cb562d1f539d04baeb6f085b769570630a67537b79b318991f117a1",
+    "frontend/dashboard.js": "74a50b8233753ede1a2092002d17bcc15fdba7615994d9edc40517666056e5ff"
+  }
+}

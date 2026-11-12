@@ -1,0 +1,42 @@
+name: Snowflake review deployment — manual only
+on:
+  workflow_dispatch:
+    inputs:
+      reviewed_plan:
+        description: 'Plan, permissions, cost and regression results reviewed and approved'
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  checks:
+    uses: ./.github/workflows/ci.yml
+  deploy-review:
+    needs: checks
+    if: ${{ inputs.reviewed_plan && vars.ENABLE_SNOWFLAKE_REVIEW_DEPLOY == 'true' }}
+    environment: snowflake-review-approval
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: snowflakedb/snowflake-actions@v3
+        with:
+          use-oidc: true
+          cli-version: '3.26.0'
+      - run: node migration/check-publication.mjs
+      - run: node migration/prepare-package.mjs
+      - name: Deploy reviewed allowlist package to homologation
+        working-directory: .migration-package
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_REVIEW_ROLE }}
+        run: snow app deploy -x
+      # No production target/workflow; Google credentials remain in Snowflake Secrets.
