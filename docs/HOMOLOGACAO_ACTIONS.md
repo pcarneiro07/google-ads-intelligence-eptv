@@ -11,7 +11,7 @@ Fixamos CLI **3.33.0 em Ubuntu**, a mesma versão relatada no Windows, para isol
 ## Fluxos preparados
 
 - `ci.yml`: testes offline existentes → pacote novo por allowlist → conferência dos dez arquivos e destino → instalação da CLI sem OIDC → `snow app bundle` dentro do pacote → inspeção de `output/bundle` por nomes e conteúdo exato. Não autentica nem chama APIs corporativas.
-- `deploy-review.yml`: disparo exclusivamente manual na branch da migração; testes acima obrigatórios; environment `snowflake-review-approval`; configuração obrigatória; OIDC; `snow connection test -x` e `snow app validate -x`.
+- `deploy-review.yml`: disparo exclusivamente manual na branch da migração; testes acima obrigatórios; environment `review`; configuração obrigatória; OIDC; `snow connection test -x` e `snow app validate -x`.
 - A operação padrão **validate** termina aí. Ela autentica e consulta a conta, mas não executa upload/build/deploy. Deve ser disparada somente após provisionamento e autorização da equipe.
 - A operação **deploy** exige também `reviewed_plan=true`, `ENABLE_SNOWFLAKE_REVIEW_DEPLOY=true` e aprovação do environment. Só então executa `snow app deploy -x`. Concorrência serializada evita deploys simultâneos; não cancela um deploy em andamento.
 

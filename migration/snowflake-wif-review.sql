@@ -13,7 +13,7 @@ CREATE USER EPTV_ADS_GITHUB_REVIEW
 GRANT ROLE EPTV_ADS_APP_OWNER TO USER EPTV_ADS_GITHUB_REVIEW;
 
 -- Typical subject (verify actual organization policy, including immutable IDs):
--- repo:ORG/REPO:environment:snowflake-review-approval
+-- repo:ORG/REPO:environment:review
 -- Because environment subjects do not bind a branch, restrict deployment branches
 -- in GitHub Environment settings to migration/snowflake-app-runtime.
 -- Do not grant roles owning ACIDADEON_INTELLIGENCE or broad future-object grants.

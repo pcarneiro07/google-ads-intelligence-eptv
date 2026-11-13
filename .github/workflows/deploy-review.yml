@@ -24,7 +24,7 @@ jobs:
   deploy-review:
     needs: checks
     if: ${{ github.ref == 'refs/heads/migration/snowflake-app-runtime' && (inputs.operation == 'validate' || (inputs.reviewed_plan && vars.ENABLE_SNOWFLAKE_REVIEW_DEPLOY == 'true')) }}
-    environment: snowflake-review-approval
+    environment: review
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:

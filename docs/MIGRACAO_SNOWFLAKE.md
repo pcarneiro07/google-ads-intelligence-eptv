@@ -71,11 +71,11 @@ Ainda falta definir organização, repositório privado, colaboradores e proteç
 
 `ci.yml` roda paridade GAQL/classificação, testes offline Node/Python, filtros do frontend, build e empacotamento permitido, sem credenciais Ads. O Node usa **zero dependências npm externas**; `npm ci --ignore-scripts` confere o lockfile. Python existe somente para desenvolvimento, comparação e operação local.
 
-`deploy-review.yml` é manual (`workflow_dispatch`), depende dos testes e exige: plano aprovado no input, variável `ENABLE_SNOWFLAKE_REVIEW_DEPLOY=true` e environment `snowflake-review-approval`. **Antes de habilitar a variável, configurar nesse environment revisores obrigatórios e restrição de branches.** Não existe target de produção.
+`deploy-review.yml` é manual (`workflow_dispatch`), depende dos testes e exige: plano aprovado no input, variável `ENABLE_SNOWFLAKE_REVIEW_DEPLOY=true` e environment `review`. **Antes de habilitar a variável, configurar nesse environment revisores obrigatórios e restrição de branches.** Não existe target de produção.
 
 CI autentica no Snowflake por OIDC/WIF da action oficial. Provisionar usuário de serviço que confie no issuer GitHub e no subject exato do environment, associado à role de homologação. Configurar `SNOWFLAKE_ACCOUNT` como GitHub Secret e `SNOWFLAKE_REVIEW_ROLE` como variável do environment. Não colocar a chave Google ou uma chave Snowflake no GitHub. [Actions/OIDC oficiais](https://docs.snowflake.com/en/developer-guide/cicd/github-action)
 
-O subject normalmente se parece com `repo:ORG/REPO:environment:snowflake-review-approval`. Repositórios novos podem emitir subject imutável com IDs de organização/repositório; confirmar a forma exata pela política GitHub sem imprimir tokens. [Nota oficial sobre subjects novos](https://docs.snowflake.com/en/user-guide/tutorials/dbt-projects-on-snowflake-ci-cd-tutorial)
+O subject normalmente se parece com `repo:ORG/REPO:environment:review`. Repositórios novos podem emitir subject imutável com IDs de organização/repositório; confirmar a forma exata pela política GitHub sem imprimir tokens. [Nota oficial sobre subjects novos](https://docs.snowflake.com/en/user-guide/tutorials/dbt-projects-on-snowflake-ci-cd-tutorial)
 
 Exemplo administrativo para revisão, substituindo o subject pela forma exata aprovada (não executado):
 
