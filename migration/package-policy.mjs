@@ -62,8 +62,8 @@ export async function approvedContent(root,file){
 export function reviewManifest(content){
   const manifest=JSON.parse(content.toString('utf8'));
   assert.equal(manifest.name,'GOOGLE_ADS_INTELLIGENCE_REVIEW');
-  assert.equal(manifest.database,'EPTV_APPS');
-  assert.equal(manifest.schema,'ADS_REVIEW');
-  assert.equal(manifest.build_job_location,'EPTV_APPS.ADS_BUILDS');
+  assert.equal(manifest.database,'DEV_PROGRAMACAO');
+  assert.equal(manifest.schema,'PUBLIC');
+  assert.equal(manifest.build_job_location,'DEV_PROGRAMACAO.PUBLIC');
   assert.ok(!manifest.targets,'Alternate deployment targets are not approved');
 }

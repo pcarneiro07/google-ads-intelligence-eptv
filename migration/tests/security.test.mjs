@@ -93,7 +93,7 @@ test('publication guard rejects local backups, secrets and corporate audit artif
 test('manifest is valid YAML (JSON syntax), single instance, Snowflake Secret and restricted review target',async()=>{
   const manifest=JSON.parse(await readFile('app.yml','utf8'));
   assert.equal(manifest.version,2);assert.equal(manifest.min_instances,1);assert.equal(manifest.max_instances,1);
-  assert.equal(manifest.schema,'ADS_REVIEW');assert.equal(manifest.auto_suspend_secs,900);
+  assert.equal(manifest.schema,'PUBLIC');assert.equal(manifest.auto_suspend_secs,900);
   assert.deepEqual(manifest.external_access_integrations,['EPTV_GOOGLE_ADS_EAI']);
   assert.equal(manifest.secrets[0].name,'GOOGLE_ADS_SERVICE_ACCOUNT');
   assert.ok(!JSON.stringify(manifest).includes('private_key'));

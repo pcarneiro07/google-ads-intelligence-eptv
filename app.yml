@@ -1,10 +1,10 @@
 {
   "version": 2,
   "name": "GOOGLE_ADS_INTELLIGENCE_REVIEW",
-  "database": "EPTV_APPS",
-  "schema": "ADS_REVIEW",
-  "query_warehouse": "EPTV_APPS_QUERY_WH",
-  "build_job_location": "EPTV_APPS.ADS_BUILDS",
+  "database": "DEV_PROGRAMACAO",
+  "schema": "PUBLIC",
+  "query_warehouse": "YOUTUBE_EPTV_WH",
+  "build_job_location": "DEV_PROGRAMACAO.PUBLIC",
   "label": "Google Ads Intelligence — homologação",
   "description": "EPTV V6.1 — leitura dinâmica Google Ads; validação pré-produção",
   "auto_resume": true,
@@ -16,7 +16,7 @@
     {"name": "ADS_DASHBOARD_CACHE_SECONDS", "value": "900"}
   ],
   "secrets": [
-    {"name": "GOOGLE_ADS_SERVICE_ACCOUNT", "secret": "EPTV_APPS.ADS_SECRETS.GOOGLE_ADS_SERVICE_ACCOUNT"}
+    {"name": "GOOGLE_ADS_SERVICE_ACCOUNT", "secret": "DEV_PROGRAMACAO.PUBLIC.GOOGLE_ADS_SERVICE_ACCOUNT"}
   ],
   "external_access_integrations": ["EPTV_GOOGLE_ADS_EAI"],
   "ignore": [

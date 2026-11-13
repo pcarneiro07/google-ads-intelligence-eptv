@@ -53,7 +53,8 @@ export function start(){
   const reader=new GoogleAds({apiVersion:reference.apiVersion,manager:reference.manager});
   const service=new AdsService({reader,ttl:process.env.ADS_DASHBOARD_CACHE_SECONDS||900});
   const port=Number(process.env.PORT||(deployed?8080:8766));
-  const hostname=deployed?process.env.HOSTNAME:'127.0.0.1';
+  // App Runtime routes ingress to the container on 0.0.0.0:$PORT; HOSTNAME is the pod name, not a bind address.
+  const hostname=deployed?'0.0.0.0':'127.0.0.1';
   if(!hostname||!Number.isInteger(port)||port<1||port>65535)throw new Error('Endereço de execução inválido.');
   const server=createServer({service,deployed});
   server.listen(port,hostname,()=>console.log('Google Ads Intelligence: serviço iniciado; somente leitura.'));
