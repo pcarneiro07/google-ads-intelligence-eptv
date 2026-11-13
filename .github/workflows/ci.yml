@@ -36,8 +36,14 @@ jobs:
           use-oidc: false
           cli-version: '3.33.0'
       - name: Bundle offline on Ubuntu (no Snowflake authentication)
+        id: bundle
         working-directory: .migration-package
         run: snow app bundle
+      - name: Temporary diagnostic — list CLI bundle symlink paths and targets
+        if: ${{ !cancelled() && steps.bundle.outcome == 'success' }}
+        run: node migration/diagnose-package-links.mjs .migration-package/output/bundle
+      - name: Materialize validated CLI source links into regular files
+        run: node migration/materialize-bundle.mjs .migration-package/output/bundle .migration-package
       - name: Inspect actual upload bundle against source allowlist
         run: node migration/verify-package.mjs .migration-package/output/bundle
       # No real Ads credentials, snapshots or production API calls in CI.
